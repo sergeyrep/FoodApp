@@ -1,0 +1,582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		A5696DB42E1F7E0D00B36E80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5696D9E2E1F7E0C00B36E80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5696DA52E1F7E0C00B36E80;
+			remoteInfo = BurgerApp;
+		};
+		A5696DBE2E1F7E0D00B36E80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5696D9E2E1F7E0C00B36E80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5696DA52E1F7E0C00B36E80;
+			remoteInfo = BurgerApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A5696DA62E1F7E0C00B36E80 /* BurgerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BurgerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5696DB32E1F7E0D00B36E80 /* BurgerAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BurgerAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5696DBD2E1F7E0D00B36E80 /* BurgerAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BurgerAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A5696E2A2E1F8E0500B36E80 /* Exceptions for "BurgerApp" folder in "BurgerApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A5696DA52E1F7E0C00B36E80 /* BurgerApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A5696DA82E1F7E0C00B36E80 /* BurgerApp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A5696E2A2E1F8E0500B36E80 /* Exceptions for "BurgerApp" folder in "BurgerApp" target */,
+			);
+			path = BurgerApp;
+			sourceTree = "<group>";
+		};
+		A5696DB62E1F7E0D00B36E80 /* BurgerAppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BurgerAppTests;
+			sourceTree = "<group>";
+		};
+		A5696DC02E1F7E0D00B36E80 /* BurgerAppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BurgerAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A5696DA32E1F7E0C00B36E80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5696DB02E1F7E0D00B36E80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5696DBA2E1F7E0D00B36E80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A5696D9D2E1F7E0C00B36E80 = {
+			isa = PBXGroup;
+			children = (
+				A5696DA82E1F7E0C00B36E80 /* BurgerApp */,
+				A5696DB62E1F7E0D00B36E80 /* BurgerAppTests */,
+				A5696DC02E1F7E0D00B36E80 /* BurgerAppUITests */,
+				A5696DA72E1F7E0C00B36E80 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A5696DA72E1F7E0C00B36E80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5696DA62E1F7E0C00B36E80 /* BurgerApp.app */,
+				A5696DB32E1F7E0D00B36E80 /* BurgerAppTests.xctest */,
+				A5696DBD2E1F7E0D00B36E80 /* BurgerAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A5696DA52E1F7E0C00B36E80 /* BurgerApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5696DC72E1F7E0D00B36E80 /* Build configuration list for PBXNativeTarget "BurgerApp" */;
+			buildPhases = (
+				A5696DA22E1F7E0C00B36E80 /* Sources */,
+				A5696DA32E1F7E0C00B36E80 /* Frameworks */,
+				A5696DA42E1F7E0C00B36E80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A5696DA82E1F7E0C00B36E80 /* BurgerApp */,
+			);
+			name = BurgerApp;
+			packageProductDependencies = (
+			);
+			productName = BurgerApp;
+			productReference = A5696DA62E1F7E0C00B36E80 /* BurgerApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A5696DB22E1F7E0D00B36E80 /* BurgerAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5696DCA2E1F7E0D00B36E80 /* Build configuration list for PBXNativeTarget "BurgerAppTests" */;
+			buildPhases = (
+				A5696DAF2E1F7E0D00B36E80 /* Sources */,
+				A5696DB02E1F7E0D00B36E80 /* Frameworks */,
+				A5696DB12E1F7E0D00B36E80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5696DB52E1F7E0D00B36E80 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A5696DB62E1F7E0D00B36E80 /* BurgerAppTests */,
+			);
+			name = BurgerAppTests;
+			packageProductDependencies = (
+			);
+			productName = BurgerAppTests;
+			productReference = A5696DB32E1F7E0D00B36E80 /* BurgerAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A5696DBC2E1F7E0D00B36E80 /* BurgerAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5696DCD2E1F7E0D00B36E80 /* Build configuration list for PBXNativeTarget "BurgerAppUITests" */;
+			buildPhases = (
+				A5696DB92E1F7E0D00B36E80 /* Sources */,
+				A5696DBA2E1F7E0D00B36E80 /* Frameworks */,
+				A5696DBB2E1F7E0D00B36E80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5696DBF2E1F7E0D00B36E80 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A5696DC02E1F7E0D00B36E80 /* BurgerAppUITests */,
+			);
+			name = BurgerAppUITests;
+			packageProductDependencies = (
+			);
+			productName = BurgerAppUITests;
+			productReference = A5696DBD2E1F7E0D00B36E80 /* BurgerAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5696D9E2E1F7E0C00B36E80 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					A5696DA52E1F7E0C00B36E80 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					A5696DB22E1F7E0D00B36E80 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = A5696DA52E1F7E0C00B36E80;
+					};
+					A5696DBC2E1F7E0D00B36E80 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = A5696DA52E1F7E0C00B36E80;
+					};
+				};
+			};
+			buildConfigurationList = A5696DA12E1F7E0C00B36E80 /* Build configuration list for PBXProject "BurgerApp" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A5696D9D2E1F7E0C00B36E80;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A5696DA72E1F7E0C00B36E80 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5696DA52E1F7E0C00B36E80 /* BurgerApp */,
+				A5696DB22E1F7E0D00B36E80 /* BurgerAppTests */,
+				A5696DBC2E1F7E0D00B36E80 /* BurgerAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A5696DA42E1F7E0C00B36E80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5696DB12E1F7E0D00B36E80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5696DBB2E1F7E0D00B36E80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A5696DA22E1F7E0C00B36E80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5696DAF2E1F7E0D00B36E80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5696DB92E1F7E0D00B36E80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A5696DB52E1F7E0D00B36E80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5696DA52E1F7E0C00B36E80 /* BurgerApp */;
+			targetProxy = A5696DB42E1F7E0D00B36E80 /* PBXContainerItemProxy */;
+		};
+		A5696DBF2E1F7E0D00B36E80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5696DA52E1F7E0C00B36E80 /* BurgerApp */;
+			targetProxy = A5696DBE2E1F7E0D00B36E80 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A5696DC52E1F7E0D00B36E80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = BW5FL75AAX;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A5696DC62E1F7E0D00B36E80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = BW5FL75AAX;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A5696DC82E1F7E0D00B36E80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BurgerApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Res.BurgerApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A5696DC92E1F7E0D00B36E80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BurgerApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Res.BurgerApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A5696DCB2E1F7E0D00B36E80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BW5FL75AAX;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Res.BurgerAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BurgerApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BurgerApp";
+			};
+			name = Debug;
+		};
+		A5696DCC2E1F7E0D00B36E80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BW5FL75AAX;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Res.BurgerAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BurgerApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BurgerApp";
+			};
+			name = Release;
+		};
+		A5696DCE2E1F7E0D00B36E80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BW5FL75AAX;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Res.BurgerAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BurgerApp;
+			};
+			name = Debug;
+		};
+		A5696DCF2E1F7E0D00B36E80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BW5FL75AAX;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Res.BurgerAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BurgerApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5696DA12E1F7E0C00B36E80 /* Build configuration list for PBXProject "BurgerApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5696DC52E1F7E0D00B36E80 /* Debug */,
+				A5696DC62E1F7E0D00B36E80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5696DC72E1F7E0D00B36E80 /* Build configuration list for PBXNativeTarget "BurgerApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5696DC82E1F7E0D00B36E80 /* Debug */,
+				A5696DC92E1F7E0D00B36E80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5696DCA2E1F7E0D00B36E80 /* Build configuration list for PBXNativeTarget "BurgerAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5696DCB2E1F7E0D00B36E80 /* Debug */,
+				A5696DCC2E1F7E0D00B36E80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5696DCD2E1F7E0D00B36E80 /* Build configuration list for PBXNativeTarget "BurgerAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5696DCE2E1F7E0D00B36E80 /* Debug */,
+				A5696DCF2E1F7E0D00B36E80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A5696D9E2E1F7E0C00B36E80 /* Project object */;
+}
