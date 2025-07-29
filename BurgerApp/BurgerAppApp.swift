@@ -5,6 +5,8 @@ import SwiftUI
 struct BurgerAppApp: App {
     var body: some Scene {
         WindowGroup {
+          
+          
           ContentViewMainScreen()
         }
     }
