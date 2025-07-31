@@ -48,6 +48,7 @@ final class MainViewModel: ObservableObject {
         }
 =======
     $selectedCategory
+    
       .dropFirst()
       .removeDuplicates()
       .sink { [weak self] _ in
