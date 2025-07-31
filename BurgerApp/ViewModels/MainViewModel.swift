@@ -40,6 +40,7 @@ final class MainViewModel: ObservableObject {
       .store(in: &cancellables)
     
     $selectedCategory
+    
       .dropFirst()
       .removeDuplicates()
       .sink { [weak self] _ in
