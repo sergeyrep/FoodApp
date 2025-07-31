@@ -1,23 +1,23 @@
 import SwiftUI
 
 struct ButtonBurger: View {
-  var vM: Products
+  var vm: Products
   @State var animation = false
   
   var body: some View {
     
-    NavigationLink(destination: DetailBurgerScreen(vm: vM)) {
+    NavigationLink(destination: DetailBurgerScreen(vm: vm)) {
       VStack {
-        Image(vM.image)
+        Image(vm.image)
           .resizable()
           .scaledToFit()
           .frame(width: 120, height: 120)
           .cornerRadius(10)
-        Text(vM.name)
+        Text(vm.name)
           .font(.headline)
           .foregroundColor(.black)
         
-        Text(vM.subName)
+        Text(vm.subName)
           .font(.caption)
           .foregroundColor(.gray)
           .lineLimit(2)
@@ -25,14 +25,14 @@ struct ButtonBurger: View {
         HStack {
           
           Image(CustomImage.star)
-          Text(vM.rating)
+          Text(vm.rating)
             .font(.subheadline)
           Spacer()
           Image(systemName: "heart")
             .foregroundStyle(.red)
-        }
-        .padding()
+        }        
       }
+      .padding()
     }
     .frame(maxWidth: 185, maxHeight: 225)
     .background(.white)
@@ -40,11 +40,10 @@ struct ButtonBurger: View {
     .shadow(radius: 10)
     .overlay(RoundedRectangle(cornerRadius: 20)
       .stroke(Color.gray.opacity(0.2), lineWidth: 1)
-             )
-             
+    )
   }
 }
 
 #Preview {
-  ButtonBurger(vM: .mock)
+  ButtonBurger(vm: .mock)
 }

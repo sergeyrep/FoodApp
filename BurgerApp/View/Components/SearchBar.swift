@@ -1,11 +1,12 @@
 import SwiftUI
 
 struct SearchBar: View {
-  @State var textSearch: String = ""
+  //@State var textSearch: String = ""
+  @ObservedObject var vm: MainViewModel
   
   var body: some View {
     HStack {
-      TextField("Поиск бургера", text: $textSearch)
+      TextField("Поиск бургера", text: $vm.textSearch)
         .frame(height: 40)
         .padding(.horizontal, 36)
         .padding(.vertical, 8)
@@ -18,8 +19,6 @@ struct SearchBar: View {
             .padding(.leading, 8),
           alignment: .leading
         )
-        //.padding(.horizontal, 10)
-      
       Button {
         
       } label: {
@@ -27,9 +26,6 @@ struct SearchBar: View {
           .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
       }
     }
-    .padding()
+    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
   }
-}
-#Preview {
-  SearchBar()
 }
