@@ -13,6 +13,7 @@ final class MainViewModel: ObservableObject {
   
   init() {
     setupBiindings()
+    Task { await fetchData() }
   }
   
   func fetchData() async {
@@ -30,7 +31,9 @@ final class MainViewModel: ObservableObject {
   
   private func setupBiindings() {
     $textSearch
-      .debounce(for: 2, scheduler: RunLoop.main)
+      .dropFirst()
+      .removeDuplicates()
+      .debounce(for: 0.5, scheduler: RunLoop.main)
       .sink { [weak self] text in
         self?.updateFilteredProducts()
       }
@@ -45,6 +48,8 @@ final class MainViewModel: ObservableObject {
         }
 =======
     $selectedCategory
+      .dropFirst()
+      .removeDuplicates()
       .sink { [weak self] _ in
         self?.updateFilteredProducts()
       }

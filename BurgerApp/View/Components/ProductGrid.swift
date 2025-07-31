@@ -19,9 +19,6 @@ struct ProductGrid: View {
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
       }
     }
-    .task {
-      await vm.fetchData()
-    }
     .textInputAutocapitalization(.never)
     .onChange(of: vm.textSearch) { _, newValue in
       vm.updateFilteredProducts()
