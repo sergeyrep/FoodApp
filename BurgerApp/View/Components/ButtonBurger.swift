@@ -28,8 +28,12 @@ struct ButtonBurger: View {
           Text(vm.rating)
             .font(.subheadline)
           Spacer()
-          Image(systemName: "heart")
-            .foregroundStyle(.red)
+          Button {
+            
+          } label: {
+            Image(systemName: "heart")
+              .foregroundStyle(.red)
+          }
         }        
       }
       .padding()
