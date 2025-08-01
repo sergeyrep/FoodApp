@@ -1,18 +1,29 @@
 import Foundation
 
-struct Products: Identifiable {
+final class Products: Identifiable, ObservableObject {
   let id = UUID()
   let name: String
   let subName: String
   let rating: String
   let image: CustomImage
-  var favorite: Bool
+  @Published var favorite: Bool
   let timeOfCooking: String
   let price: String
   let category: Category
   
   static var mock: Self {
     .init(name: "333f", subName: "wwg", rating: "4.3", image: .Burger1, favorite: false, timeOfCooking: " - 29 min", price: "350 ₽", category: .classic)
+  }
+  
+  init(name: String, subName: String, rating: String, image: CustomImage, favorite: Bool, timeOfCooking: String, price: String, category: Category) {
+    self.name = name
+    self.subName = subName
+    self.rating = rating
+    self.image = image
+    self.favorite = favorite
+    self.timeOfCooking = timeOfCooking
+    self.price = price
+    self.category = category
   }
 }
 

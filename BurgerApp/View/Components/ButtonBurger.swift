@@ -2,9 +2,9 @@ import SwiftUI
 
 struct ButtonBurger: View {
   
-  @ObservedObject var vM: MainViewModel
+  @ObservedObject var product: Products
   @State var animatedHeart: Bool = false
-  @Binding var product: Products
+  var onFavoriteToggle: () -> Void
   
   private var favoriteButtonAnimated: Animation {
     .spring(response: 0.5, dampingFraction: 0.9)
@@ -86,7 +86,6 @@ struct ButtonBurger: View {
     withAnimation(favoriteButtonAnimated) {
       product.favorite.toggle()
       animatedHeart = true
-      //vM.toggleFavorite(product)
     }
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
       withAnimation {
@@ -97,5 +96,5 @@ struct ButtonBurger: View {
 }
 
 #Preview {
-  ButtonBurger(vM: .init(), product: .constant(.mock))
+  ButtonBurger(product: Products.mock, onFavoriteToggle: {})
 }
