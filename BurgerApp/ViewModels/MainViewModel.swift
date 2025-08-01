@@ -3,7 +3,7 @@ import Combine
 
 @MainActor
 final class MainViewModel: ObservableObject {
-  @Published var allProducts: [Products] = [] 
+  @Published private(set) var allProducts: [Products] = Products.sampleProducts
   @Published var filteredProducts: [Products] = []
   @Published var selectedCategory: Category = .all
   @Published var textSearch: String = ""
@@ -18,12 +18,9 @@ final class MainViewModel: ObservableObject {
   
   func fetchData() async {
     do {
-      if let downloadProduct = try await NetworkService.shared.downloadData() {
+      let downloadProduct = try await NetworkService.shared.downloadData()
         allProducts = downloadProduct
         updateFilteredProducts()
-      } else {
-        print("Error fetching data")
-      }
     } catch {
       print("Error fetching data: \(error)")
     }
@@ -76,8 +73,8 @@ final class MainViewModel: ObservableObject {
 
 extension MainViewModel {
   func toggleFavorite(for productID: UUID) {
-    if let index = products.firstIndex(where: { $0.id == productID }) {
-      products[index].favorite.toggle()
+    if let product = allProducts.first(where: { $0.id == productID }) {
+      product.favorite.toggle()
     }
   }
 }

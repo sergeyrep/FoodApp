@@ -12,12 +12,11 @@ struct ProductGrid: View {
   
   var body: some View {
     ScrollView {
-      LazyVGrid(columns: [GridItem(.flexible(), spacing: 0), GridItem(.flexible(), spacing: 0)], spacing: 0) {
+      LazyVGrid(columns: [GridItem(.adaptive(minimum: 160))]) {
         ForEach(vm.filteredProducts) { product in
-          ButtonBurger(vM: vm, product: Binding<Products>(
-            get: { product },
-            set: { _ in vm.toggleFavorite(for: product.id) }
-          ))
+          ButtonBurger(product: product, onFavoriteToggle: {
+            vm.toggleFavorite(for: product.id)
+          })
         }
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
       }
