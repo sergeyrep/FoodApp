@@ -3,11 +3,11 @@ import Combine
 
 @MainActor
 final class MainViewModel: ObservableObject {
-  @Published var allProducts: [Products] = [] // Все продукты
-  @Published var filteredProducts: [Products] = [] // Отфильтрованные продукты
+  @Published var allProducts: [Products] = [] 
+  @Published var filteredProducts: [Products] = []
   @Published var selectedCategory: Category = .all
-  //@Published var product: [Products] = Products.sampleProducts
   @Published var textSearch: String = ""
+  @Published var products: [Products] = Products.sampleProducts
   
   private var cancellables = Set<AnyCancellable>()
   
@@ -48,7 +48,6 @@ final class MainViewModel: ObservableObject {
         }
 =======
     $selectedCategory
-    
       .dropFirst()
       .removeDuplicates()
       .sink { [weak self] _ in
@@ -73,23 +72,12 @@ final class MainViewModel: ObservableObject {
     }
     filteredProducts = result
   }
-  
-  //  func serachProduct(by text: String) {
-  //    if text.isEmpty {
-  //      filteredProducts = allProducts
-  //    } else {
-  //      filteredProducts = allProducts.filter {
-  //        $0.name.localizedCaseInsensitiveContains(text) ||
-  //        $0.subName.localizedCaseInsensitiveContains(text)
-  //      }
-  //    }
-  //  }
-  //  
-  //  func filterProducts(by category: Category) {
-  //    if category == .all {
-  //      filteredProducts = allProducts
-  //    } else {
-  //      filteredProducts = allProducts.filter { $0.category == category }
-  //    }
-  //  }
+}
+
+extension MainViewModel {
+  func toggleFavorite(for productID: UUID) {
+    if let index = products.firstIndex(where: { $0.id == productID }) {
+      products[index].favorite.toggle()
+    }
+  }
 }
