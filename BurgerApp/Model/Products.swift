@@ -6,7 +6,7 @@ struct Products: Identifiable {
   let subName: String
   let rating: String
   let image: CustomImage
-  let favorite: Bool
+  var favorite: Bool
   let timeOfCooking: String
   let price: String
   let category: Category

@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct SearchBar: View {
-  //@State var textSearch: String = ""
   @ObservedObject var vm: MainViewModel
   
   var body: some View {

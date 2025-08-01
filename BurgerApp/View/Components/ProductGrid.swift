@@ -14,7 +14,10 @@ struct ProductGrid: View {
     ScrollView {
       LazyVGrid(columns: [GridItem(.flexible(), spacing: 0), GridItem(.flexible(), spacing: 0)], spacing: 0) {
         ForEach(vm.filteredProducts) { product in
-          ButtonBurger(vm: product)
+          ButtonBurger(vM: vm, product: Binding<Products>(
+            get: { product },
+            set: { _ in vm.toggleFavorite(for: product.id) }
+          ))
         }
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
       }
