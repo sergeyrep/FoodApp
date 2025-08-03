@@ -1,14 +1,7 @@
 import SwiftUI
 
-struct ProductGrid: View {
-  
+struct ProductGrid: View {  
   @ObservedObject var vm: MainViewModel
-  
-  init(vm: MainViewModel) {
-    self._vm = ObservedObject(wrappedValue: vm)
-    print("Init")
-  }
-  
   
   var body: some View {
     ScrollView {
@@ -18,28 +11,14 @@ struct ProductGrid: View {
             vm.toggleFavorite(for: product.id)
           })
         }
-        .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
-      }
+        .padding(.top, 2)
+      }.padding(10)
     }
     .textInputAutocapitalization(.never)
     .onChange(of: vm.textSearch) { _, newValue in
       vm.updateFilteredProducts()
     }
     .overlay { noSeachrResult }
-    .toolbar {
-      ToolbarItem(placement: .navigationBarTrailing) {
-        if !vm.textSearch.isEmpty {
-          Button("Сбросить") {
-            resetSearch()
-          }
-        }
-      }
-    }
-  }
-  
-  private func resetSearch() {
-    vm.textSearch = ""
-    vm.filteredProducts = vm.allProducts
   }
   
   @ViewBuilder

@@ -7,7 +7,6 @@ final class MainViewModel: ObservableObject {
   @Published var filteredProducts: [Products] = []
   @Published var selectedCategory: Category = .all
   @Published var textSearch: String = ""
-  @Published var products: [Products] = Products.sampleProducts
   
   private var cancellables = Set<AnyCancellable>()
   

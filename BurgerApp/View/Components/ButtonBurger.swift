@@ -31,7 +31,7 @@ struct ButtonBurger: View {
       productTitle
       ratingAndFavorite
     }
-    .padding(12)
+    .padding(10)
   }
   
   private var productImage: some View {
