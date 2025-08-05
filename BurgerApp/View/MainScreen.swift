@@ -1,15 +1,18 @@
 import SwiftUI
 
 struct MainScreen: View {
-  @EnvironmentObject var vM: MainViewModel
+  @ObservedObject var vm: MainViewModel
+  @ObservedObject var favorite: FavoriteViewModel
   
   init() {
     UITabBar.appearance().backgroundColor = UIColor.reds
+    self.vm = .init()
+    self.favorite = .init()
   }
   
   var body: some View {
     TabView {
-      HomeScreen()
+      HomeScreen(favoriteViewModel: favorite)
         .tabItem {
           Image(CustomImage.home)
           Text("*")
@@ -36,7 +39,7 @@ struct MainScreen: View {
           Text("*")
         }
       
-      LikeScreen()
+      LikeScreen(vm: favorite, mainVM: vm)
         .tabItem {
           Image(CustomImage.heart)
           Text("*")
@@ -48,5 +51,5 @@ struct MainScreen: View {
 
 
 #Preview {
-  HomeScreen()
+  HomeScreen(favoriteViewModel: .init())
 }

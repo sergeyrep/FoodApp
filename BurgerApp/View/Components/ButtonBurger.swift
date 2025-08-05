@@ -3,6 +3,7 @@ import SwiftUI
 struct ButtonBurger: View {
   
   @ObservedObject var product: Products
+  @ObservedObject var favorite: FavoriteViewModel
   @State var animatedHeart: Bool = false
   var onFavoriteToggle: () -> Void
   
@@ -75,8 +76,10 @@ struct ButtonBurger: View {
   private var favoriteButton: some View {
     Button {
       toogleFavorite()
+      favorite.favoriteProduct()
     } label: {
       Image(systemName: product.favorite ? "heart.fill" : "heart")
+        .symbolEffect(.bounce, value: product.favorite)
         .foregroundStyle(product.favorite ? .red : .gray)
         .scaleEffect(animatedHeart ? 1.5 : 1)
     }
@@ -96,5 +99,5 @@ struct ButtonBurger: View {
 }
 
 #Preview {
-  ButtonBurger(product: Products.mock, onFavoriteToggle: {})
+  ButtonBurger(product: Products.mock, favorite: .init(), onFavoriteToggle: {})
 }
