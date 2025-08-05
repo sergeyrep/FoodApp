@@ -2,12 +2,13 @@ import SwiftUI
 
 struct ProductGrid: View {  
   @ObservedObject var vm: MainViewModel
+  @ObservedObject var favorite: FavoriteViewModel
   
   var body: some View {
     ScrollView {
       LazyVGrid(columns: [GridItem(.adaptive(minimum: 160))]) {
         ForEach(vm.filteredProducts) { product in
-          ButtonBurger(product: product, onFavoriteToggle: {
+          ButtonBurger(product: product, favorite: favorite, onFavoriteToggle: {
             vm.toggleFavorite(for: product.id)
           })
         }
