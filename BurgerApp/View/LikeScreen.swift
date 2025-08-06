@@ -5,10 +5,17 @@ struct LikeScreen: View {
   @ObservedObject var mainVM: MainViewModel
   
   var body: some View {
-    NavigationStack {
+    navTitle
+    ScrollView {
       contentView
-        .navigationTitle("Избранное")
     }
+  }
+  
+  //@ViewBuilder
+  private var navTitle: some View {
+    Text("Избранное")
+      .font(Font.custom(.lobster, size: 45))
+      .foregroundColor(.reds)
   }
   
   @ViewBuilder
@@ -21,38 +28,39 @@ struct LikeScreen: View {
   }
   
   private var productsGrid: some View {
-    ScrollView {
-      LazyVGrid(columns: [GridItem(.adaptive(minimum: 160))]) {
-        ForEach(vm.favoriteProducts) { product in
-          ButtonBurger(
-            product: product,
-            favorite: vm,
-            onFavoriteToggle: {
+    LazyVGrid(columns: [GridItem(.adaptive(minimum: 160))]) {
+      ForEach(vm.favoriteProducts) { product in
+        ButtonBurger(
+          product: product,
+          favorite: vm,
+          onFavoriteToggle: {
+            withAnimation {
               mainVM.toggleFavorite(for: product.id)
             }
-          )
-          .contextMenu {
-            Button(role: .destructive) {
-              withAnimation {
-                mainVM.toggleFavorite(for: product.id)
-              }
-            } label: {
-              Label("Remove from favorites", systemImage: "heart.slash")
-            }
           }
-          .swipeActions(edge: .trailing) {
-            Button(role: .destructive) {
-              withAnimation {
-                mainVM.toggleFavorite(for: product.id)
-              }
-            } label: {
-              Label("Удалить из избранного", systemImage: "heart.slash")
-            }
-          }
-        }
+        )
+//        .contextMenu {
+//          Button(role: .destructive) {
+//            withAnimation {
+//              mainVM.toggleFavorite(for: product.id)
+//            }
+//          } label: {
+//            Label("Remove from favorites", systemImage: "heart.slash")
+//          }
+//        }
+//        .swipeActions(edge: .trailing) {
+//          Button(role: .destructive) {
+//            withAnimation {
+//              mainVM.toggleFavorite(for: product.id)
+//            }
+//          } label: {
+//            Label("Удалить из избранного", systemImage: "heart.slash")
+//          }
+//        }
       }
     }
   }
+  
   
   private var emptyStateView: some View {
     ContentUnavailableView(
