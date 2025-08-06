@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct DetailParametr: View {
-  @State private var spice = 5.0
-  @State private var portion = 1
+  @State var spice = 5.0
+  @Binding var portion: Int
   
   var body: some View {
     HStack {
@@ -49,9 +49,5 @@ struct DetailParametr: View {
     }
     .padding()
   }
-}
-
-#Preview {
-  DetailParametr()
 }
 

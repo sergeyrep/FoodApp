@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct LikeScreen: View {
-  @StateObject var vm = FavoriteViewModel()
+  @StateObject var vm: FavoriteViewModel
   @ObservedObject var mainVM: MainViewModel
+  @ObservedObject var addToCart: AddViewModel
   
   var body: some View {
     navTitle
@@ -32,33 +33,26 @@ struct LikeScreen: View {
       ForEach(vm.favoriteProducts) { product in
         ButtonBurger(
           product: product,
-          favorite: vm,
+          favorite: vm, addToCart: addToCart,
           onFavoriteToggle: {
             withAnimation {
               mainVM.toggleFavorite(for: product.id)
             }
           }
         )
-//        .contextMenu {
-//          Button(role: .destructive) {
-//            withAnimation {
-//              mainVM.toggleFavorite(for: product.id)
-//            }
-//          } label: {
-//            Label("Remove from favorites", systemImage: "heart.slash")
-//          }
-//        }
-//        .swipeActions(edge: .trailing) {
-//          Button(role: .destructive) {
-//            withAnimation {
-//              mainVM.toggleFavorite(for: product.id)
-//            }
-//          } label: {
-//            Label("Удалить из избранного", systemImage: "heart.slash")
-//          }
-//        }
+        .transition(.scale.combined(with: .opacity))
+        .contextMenu {
+          Button(role: .destructive) {
+            withAnimation {
+              mainVM.toggleFavorite(for: product.id)
+            }
+          } label: {
+            Label("Remove from favorites", systemImage: "heart.slash")
+          }
+        }
       }
     }
+    .animation(.easeInOut, value: vm.favoriteProducts)
   }
   
   
@@ -72,5 +66,5 @@ struct LikeScreen: View {
 }
 
 #Preview {
-  LikeScreen(vm: .init(), mainVM: .init())
+  LikeScreen(vm: .init(), mainVM: .init(), addToCart: .init())
 }

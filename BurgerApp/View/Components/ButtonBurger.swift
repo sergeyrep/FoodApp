@@ -4,6 +4,7 @@ struct ButtonBurger: View {
   
   @ObservedObject var product: Products
   @ObservedObject var favorite: FavoriteViewModel
+  @ObservedObject var addToCart: AddViewModel
   @State var animatedHeart: Bool = false
   var onFavoriteToggle: () -> Void
   
@@ -12,7 +13,7 @@ struct ButtonBurger: View {
   }
   
   var body: some View {
-    NavigationLink(destination: DetailBurgerScreen(vm: product)) {
+    NavigationLink(destination: DetailBurgerScreen(product: product, favorite: favorite, addToCart: addToCart)) {
       productContent
     }
     .buttonStyle(.plain)
@@ -36,11 +37,14 @@ struct ButtonBurger: View {
   }
   
   private var productImage: some View {
-    Image(product.image)
-      .resizable()
-      .scaledToFit()
-      .frame(width: 120, height: 120)
-      .cornerRadius(10)
+    HStack {
+      Image(product.image)
+        .resizable()
+        .scaledToFit()
+        .frame(width: 120, height: 120)
+        .cornerRadius(10)
+    }
+    .frame(maxWidth: .infinity)
   }
   
   private var productTitle: some View {
@@ -61,7 +65,7 @@ struct ButtonBurger: View {
     HStack {
       ratingValue
       Spacer()
-      favoriteButton
+      LikeButton(favorite: favorite, product: product)
     }
   }
   
@@ -72,32 +76,8 @@ struct ButtonBurger: View {
         .font(.subheadline)
     }
   }
-  
-  private var favoriteButton: some View {
-    Button {
-      toogleFavorite()
-      favorite.favoriteProduct()
-    } label: {
-      Image(systemName: product.favorite ? "heart.fill" : "heart")
-        .symbolEffect(.bounce, value: product.favorite)
-        .foregroundStyle(product.favorite ? .red : .gray)
-        .scaleEffect(animatedHeart ? 1.5 : 1)
-    }
-  }
-  
-  private func toogleFavorite() {
-    withAnimation(favoriteButtonAnimated) {
-      product.favorite.toggle()
-      animatedHeart = true
-    }
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-      withAnimation {
-        animatedHeart = false
-      }
-    }
-  }
 }
 
 #Preview {
-  ButtonBurger(product: Products.mock, favorite: .init(), onFavoriteToggle: {})
+  ButtonBurger(product: Products.mock, favorite: .init(), addToCart: .init(), onFavoriteToggle: {})
 }

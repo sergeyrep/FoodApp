@@ -3,7 +3,7 @@ import Combine
 
 @MainActor
 final class MainViewModel: ObservableObject {
-  @Published private(set) var allProducts: [Products] = Products.sampleProducts
+  @Published var allProducts: [Products] = Products.sampleProducts
   @Published var filteredProducts: [Products] = []
   @Published var selectedCategory: Category = .all
   @Published var textSearch: String = ""
