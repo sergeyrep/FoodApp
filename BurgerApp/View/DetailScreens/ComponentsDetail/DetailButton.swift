@@ -1,12 +1,18 @@
 import SwiftUI
 
 struct DetailButton: View {
-  var vm: Products
+  let product: Products
+  @ObservedObject var addToCart: AddViewModel
+  @Binding var portion: Int
+  
+  var totalPrice: Double {
+    Double(portion) * product.price
+  }
   
     var body: some View {
       HStack {
         Button(action: {}) {
-          Text(vm.price)
+          Text("₸\(totalPrice, specifier: "%.2f")")
         }
         .frame(width: 104, height: 70)
         .foregroundColor(.white)
@@ -14,8 +20,10 @@ struct DetailButton: View {
         .cornerRadius(20)
         
         Spacer()
-        Button(action: {}) {
-          Text("Order Now")
+        Button(action: {
+          addToCart.addToCart(product, quantity: portion)
+        }) {
+          Text("Добавить в корзину")
         }
         .frame(width: 239, height: 70)
         .foregroundColor(.white)
@@ -26,6 +34,4 @@ struct DetailButton: View {
     }
 }
 
-#Preview {
-  DetailButton(vm: .mock)
-}
+
