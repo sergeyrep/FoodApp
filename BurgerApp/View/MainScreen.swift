@@ -39,7 +39,9 @@ struct MainScreen: View {
           Text("*")
         }
       
-      LikeScreen(vm: favorite, mainVM: vm)
+      NavigationStack {
+        LikeScreen(vm: favorite, mainVM: vm)
+      }
         .tabItem {
           Image(CustomImage.heart)
           Text("*")
