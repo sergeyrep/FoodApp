@@ -36,6 +36,4 @@ struct ContentViewMainScreen: View {
   }
 }
 
-#Preview {
-    ContentView()
-}
+

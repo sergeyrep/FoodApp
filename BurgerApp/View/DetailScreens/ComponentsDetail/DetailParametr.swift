@@ -19,35 +19,43 @@ struct DetailParametr: View {
         }
       }
       Spacer(minLength: 100)
-      VStack(alignment: .leading) {
-        Text("Portion")
-        HStack(alignment: .bottom) {
-          Button {
-            if portion > 1 { portion -= 1 }
-          } label: {
-            Image(.minus)
-              .frame(width: 10, height: 10)
-          }
-          
-          Spacer()
-          
-          Text("\(portion)")
-            .font(.system(size: 25))
-            .frame(maxWidth: 40)
-          
-          Spacer()
-          
-          Button {
-            portion += 1
-          } label: {
-            Image(.plus1)
-              .frame(width: 10, height: 10)
-          }
-        }
-        .padding()
-      }
+      
+      IncreaseButton(portion: $portion)
     }
     .padding()
   }
 }
 
+struct IncreaseButton: View {
+  @Binding var portion: Int
+  
+  var body: some View {
+    VStack(alignment: .leading) {
+      Text("Portion")
+      HStack(alignment: .bottom) {
+        Button {
+          if portion > 1 { portion -= 1 }
+        } label: {
+          Image(.minus)
+            .frame(width: 10, height: 10)
+        }
+        
+        Spacer()
+        
+        Text("\(portion)")
+          .font(.system(size: 25))
+          .frame(maxWidth: 40)
+        
+        Spacer()
+        
+        Button {
+          portion += 1
+        } label: {
+          Image(.plus1)
+            .frame(width: 10, height: 10)
+        }
+      }
+      .padding()
+    }
+  }
+}
