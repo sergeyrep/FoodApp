@@ -1,25 +1,19 @@
 import SwiftUI
 
 struct SearchBar: View {
-  @State var textSearch: String = ""
+  @ObservedObject var vm: MainViewModel
   
   var body: some View {
     HStack {
-      TextField("Поиск бургера", text: $textSearch)
-        .frame(height: 40)
-        .padding(.horizontal, 36)
-        .padding(.vertical, 8)
-        .background(Color(.white))
-        .cornerRadius(20)
-        .shadow(radius: 3)
+      textField
         .overlay(
-          Image(systemName: "magnifyingglass")
-            .foregroundStyle(.gray)
-            .padding(.leading, 8),
+          resetSearchIcon,
           alignment: .leading
         )
-        //.padding(.horizontal, 10)
-      
+        .overlay(
+          resetSearch,
+          alignment: .trailing
+        )
       Button {
         
       } label: {
@@ -27,9 +21,38 @@ struct SearchBar: View {
           .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
       }
     }
-    .padding()
+    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
   }
-}
-#Preview {
-  SearchBar()
+  
+  @ViewBuilder
+  private var textField: some View {
+    TextField("Поиск бургера", text: $vm.textSearch)
+      .frame(height: 40)
+      .padding(.horizontal, 36)
+      .padding(.vertical, 8)
+      .background(Color(.white))
+      .cornerRadius(20)
+      .shadow(radius: 3)
+  }
+  
+  @ViewBuilder
+  private var resetSearchIcon: some View {
+    Image(systemName: "magnifyingglass")
+      .foregroundStyle(.gray)
+      .padding(.leading, 4)
+  }
+  
+  @ViewBuilder
+  private var resetSearch: some View {
+    if !vm.textSearch.isEmpty {
+      Button {
+        vm.textSearch = ""
+        vm.filteredProducts = vm.allProducts
+      } label: {
+        Image(systemName: "xmark.circle")
+          .foregroundStyle(.gray)
+          .padding(.trailing, 4)
+      }
+    }
+  }
 }
