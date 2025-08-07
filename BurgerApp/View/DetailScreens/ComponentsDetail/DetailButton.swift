@@ -12,7 +12,7 @@ struct DetailButton: View {
     var body: some View {
       HStack {
         Button(action: {}) {
-          Text("₸\(totalPrice, specifier: "%.2f")")
+          Text("\(totalPrice, specifier: "%.2f") ₽")
         }
         .frame(width: 104, height: 70)
         .foregroundColor(.white)

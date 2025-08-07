@@ -2,7 +2,6 @@ import Foundation
 
 final class AddViewModel: ObservableObject {
   @Published var cartItem: [CartItem] = []
-  //@Published var allProducts: [Products] = Products.sampleProducts
   
   func addToCart(_ product: Products, quantity: Int) {
     if let index = cartItem.firstIndex(where: { $0.product.id == product.id }) {
