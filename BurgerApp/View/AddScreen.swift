@@ -1,18 +1,42 @@
-//
-//  AddScreen.swift
-//  BurgerApp
-//
-//  Created by Сергей on 13.07.2025.
-//
-
 import SwiftUI
 
 struct AddScreen: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+  @ObservedObject var addToCart: AddViewModel
+  
+  var body: some View {
+    ScrollView {
+      Text("Корзина")
+        .font(Font.custom(.lobster, size: 45))
+        .foregroundColor(.reds)
+      VStack {
+        ForEach(addToCart.cartItem) { item in
+          HStack {
+            Image(item.product.image)
+              .resizable()
+              .scaledToFit()
+              .frame(width: 100, height: 100)
+              .padding()
+            
+            Spacer()
+            
+            VStack {
+              Text("\(item.product.name)")
+                .font(.headline)
+              Text("\(item.quantity) * \(item.product.price, specifier: "%.2f") ₽")
+                .font(.caption)
+            }
+            
+            Spacer()
+            
+//            IncreaseButton(portion: $portion)
+          }
+          .padding()
+        }
+        Text("\(addToCart.totalPrice, specifier: "%.2f") ₽")
+          .font(.caption)
+      }
     }
+  }
 }
 
-#Preview {
-    AddScreen()
-}
+
