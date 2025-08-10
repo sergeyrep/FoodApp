@@ -24,7 +24,6 @@ class MainViewModel: ObservableObject {
     @Published var filteredProducts: [Products] = [] // Отфильтрованные продукты
     
     func fetchData() async {
-        // Загрузка данных
       guard let downloadProduct: [Products] = await NetworkService.shared.downloadData() else { return }
         DispatchQueue.main.async {
             self.allProducts = downloadProduct
