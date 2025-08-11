@@ -7,14 +7,14 @@ struct DetailParametr: View {
   var body: some View {
     HStack {
       VStack(alignment: .leading){
-        Text("Spice")
+        Text("Острота")
         Slider(value: $spice, in: 0...10, step: 1)
           .accentColor(spice < 5 ? .green : .red)
         HStack {
-          Text("Mild")
+          Text("Легкий")
             .foregroundColor(.green)
           Spacer()
-          Text("Hot")
+          Text("Острый")
             .foregroundColor(.red)
         }
       }
@@ -37,7 +37,7 @@ struct IncreaseButton: View {
           if portion > 1 { portion -= 1 }
         } label: {
           Image(.minus)
-            .frame(width: 10, height: 10)
+            .frame(width: 8, height: 8)
         }
         
         Spacer()
@@ -52,7 +52,7 @@ struct IncreaseButton: View {
           portion += 1
         } label: {
           Image(.plus1)
-            .frame(width: 10, height: 10)
+            .frame(width: 8, height: 8)
         }
       }
       .padding()

@@ -1,12 +1,10 @@
 import SwiftUI
 
 struct ContentView: View {
-  @StateObject var vm = MainViewModel()
   
     var body: some View {
       NavigationStack {
         MainScreen()
-          .environmentObject(vm)
       }
     }
 }

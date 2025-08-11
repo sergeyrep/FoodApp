@@ -3,7 +3,7 @@ import SwiftUI
 struct MainScreen: View {
   @StateObject var vm = MainViewModel()
   @StateObject var favorite = FavoriteViewModel()
-  @ObservedObject var addToCart = AddViewModel()
+  @StateObject var addToCart = AddViewModel()
   
   init() {
     UITabBar.appearance().backgroundColor = UIColor.reds
@@ -25,7 +25,9 @@ struct MainScreen: View {
         }
         .tag(Tab.profile)
       
-      AddScreen(addToCart: addToCart)
+      NavigationStack {
+        AddScreen(addToCart: addToCart, favorite: favorite)
+      }
         .tabItem {
           Image(CustomImage.plus)
           Text("*")

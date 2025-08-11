@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ButtonBurger: View {
   
-  @Binding var product: Products
+  let product: Products
   @ObservedObject var favorite: FavoriteViewModel
   @ObservedObject var addToCart: AddViewModel
   @State var animatedHeart: Bool = false
@@ -13,7 +13,13 @@ struct ButtonBurger: View {
   }
   
   var body: some View {
-    NavigationLink(destination: DetailBurgerScreen(product: $product, favorite: favorite, addToCart: addToCart)) {
+    NavigationLink(
+      destination: DetailBurgerScreen(
+        product: product,
+        favorite: favorite,
+        addToCart: addToCart
+      )
+    ) {
       productContent
     }
     .buttonStyle(.plain)
@@ -65,7 +71,7 @@ struct ButtonBurger: View {
     HStack {
       ratingValue
       Spacer()
-      LikeButton(favorite: favorite, product: $product)
+      LikeButton(favorite: favorite, product: product)
     }
   }
   

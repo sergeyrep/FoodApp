@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct LikeScreen: View {
-  @StateObject var vm: FavoriteViewModel
+  @ObservedObject var vm: FavoriteViewModel
   @ObservedObject var mainVM: MainViewModel
   @ObservedObject var addToCart: AddViewModel
-  
-  var body: some View {
-    navTitle
+
+  var body: some View {    
     ScrollView {
+      navTitle
       contentView
     }
   }
@@ -30,9 +30,9 @@ struct LikeScreen: View {
   
   private var productsGrid: some View {
     LazyVGrid(columns: [GridItem(.adaptive(minimum: 160))]) {
-      ForEach($vm.favoriteProducts) { $product in
+      ForEach(vm.favoriteProducts) { product in
         ButtonBurger(
-          product: $product,
+          product: product,
           favorite: vm, addToCart: addToCart,
           onFavoriteToggle: {
             withAnimation {
