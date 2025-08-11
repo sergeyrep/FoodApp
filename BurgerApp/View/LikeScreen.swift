@@ -30,9 +30,9 @@ struct LikeScreen: View {
   
   private var productsGrid: some View {
     LazyVGrid(columns: [GridItem(.adaptive(minimum: 160))]) {
-      ForEach(vm.favoriteProducts) { product in
+      ForEach($vm.favoriteProducts) { $product in
         ButtonBurger(
-          product: product,
+          product: $product,
           favorite: vm, addToCart: addToCart,
           onFavoriteToggle: {
             withAnimation {

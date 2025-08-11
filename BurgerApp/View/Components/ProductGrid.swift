@@ -8,8 +8,8 @@ struct ProductGrid: View {
   var body: some View {
     ScrollView {
       LazyVGrid(columns: [GridItem(.adaptive(minimum: 160))]) {
-        ForEach(vm.filteredProducts) { product in
-          ButtonBurger(product: product, favorite: favorite, addToCart: addToCart, onFavoriteToggle: {
+        ForEach($vm.filteredProducts) { $product in
+          ButtonBurger(product: $product, favorite: favorite, addToCart: addToCart, onFavoriteToggle: {
             vm.toggleFavorite(for: product.id)
           })
         }

@@ -34,15 +34,6 @@ final class MainViewModel: ObservableObject {
         self?.updateFilteredProducts()
       }
       .store(in: &cancellables)
-    
-<<<<<<< HEAD
-    func fetchData() async {
-      guard let downloadProduct: [Products] = await NetworkService.shared.downloadData() else { return }
-        DispatchQueue.main.async {
-            self.allProducts = downloadProduct
-            self.filteredProducts = downloadProduct
-        }
-=======
     $selectedCategory
       .dropFirst()
       .removeDuplicates()
@@ -57,7 +48,6 @@ final class MainViewModel: ObservableObject {
     
     if selectedCategory != .all {
       result = result.filter { $0.category == selectedCategory }
->>>>>>> 68d5f1d (q)
     }
     
     if !textSearch.isEmpty {
@@ -72,7 +62,7 @@ final class MainViewModel: ObservableObject {
 
 extension MainViewModel {
   func toggleFavorite(for productID: UUID) {
-    if let product = allProducts.first(where: { $0.id == productID }) {
+    if var product = allProducts.first(where: { $0.id == productID }) {
       product.favorite.toggle()
     }
   }

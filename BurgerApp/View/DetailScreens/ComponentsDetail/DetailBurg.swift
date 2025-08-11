@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct DetailBurg: View {
-  @ObservedObject var product: Products
+  @Binding var product: Products
   @ObservedObject var favorite: FavoriteViewModel
   
   var body: some View {
@@ -18,7 +18,7 @@ struct DetailBurg: View {
         Text(product.rating)
         Spacer()
         Text("\(product.timeOfCooking)")
-        LikeButton(favorite: favorite, product: product)
+        LikeButton(favorite: favorite, product: $product)
       }
       .padding()
       Text(product.subName)
@@ -27,6 +27,3 @@ struct DetailBurg: View {
   }
 }
 
-#Preview {
-  DetailBurg(product: .mock, favorite: .init())
-}

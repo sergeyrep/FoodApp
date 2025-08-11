@@ -2,7 +2,7 @@ import SwiftUI
 
 struct LikeButton: View {
   @ObservedObject var favorite: FavoriteViewModel
-  @ObservedObject var product: Products
+  @Binding var product: Products
   
   @State private var animatedHeart: Bool = false
   
