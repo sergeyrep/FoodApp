@@ -29,7 +29,7 @@ struct ButtonBurger: View {
     }
     .buttonStyle(.plain)
     .frame(maxWidth: 185, maxHeight: 225)
-    .background(.gray)
+    .background(.white)
     .cornerRadius(20)
     .shadow(radius: 10)
     .overlay(

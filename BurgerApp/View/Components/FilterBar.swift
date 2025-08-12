@@ -19,8 +19,8 @@ struct FilterBar: View {
             Text(category.rawValue)
               .frame(width: 75, height: 50)
               .font(.system(size: 14))
-              .background(vm.selectedCategory == category ? Color.red : Color.gray)
-              .foregroundColor(vm.selectedCategory == category ? Color.white : Color.black)
+              .background(vm.selectedCategory == category ? Color.red : Color.color)
+              .foregroundColor(vm.selectedCategory == category ? Color.color : Color.white)
               .cornerRadius(20)
           }
         }

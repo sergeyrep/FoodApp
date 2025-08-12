@@ -9,7 +9,7 @@ struct LabelBar: View {
           .foregroundColor(.reds)
         Text("Закажите свой любимый бургер")
           .font(Font.custom(.popins, size: 20))
-          .foregroundColor(.white)
+          .foregroundColor(.color)
       }
       
       Spacer()
