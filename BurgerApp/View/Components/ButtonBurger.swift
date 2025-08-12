@@ -20,11 +20,16 @@ struct ButtonBurger: View {
         addToCart: addToCart
       )
     ) {
-      productContent
+      ZStack {
+        productContent
+        LikeButton(favorite: favorite, product: product)
+          .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+          .padding()
+      }
     }
     .buttonStyle(.plain)
     .frame(maxWidth: 185, maxHeight: 225)
-    .background(.white)
+    .background(.gray)
     .cornerRadius(20)
     .shadow(radius: 10)
     .overlay(
@@ -34,54 +39,52 @@ struct ButtonBurger: View {
   }
   
   private var productContent: some View {
-    VStack(alignment: .leading, spacing: 8) {
+    VStack(alignment: .center, spacing: 8) {
       productImage
       productTitle
-      ratingAndFavorite
+        .frame(maxWidth: .infinity, alignment: .leading)
+      priceAndRatingProduct
     }
     .padding(10)
   }
   
   private var productImage: some View {
-    HStack {
       Image(product.image)
         .resizable()
         .scaledToFit()
         .frame(width: 120, height: 120)
         .cornerRadius(10)
-    }
-    .frame(maxWidth: .infinity)
+        .padding(8)
   }
   
   private var productTitle: some View {
-    VStack(alignment: .leading, spacing: 4) {
       Text(product.name)
-        .font(.headline)
-        .foregroundColor(.black)
-        .lineLimit(1)
-      
-      Text(product.subName)
         .font(.caption)
-        .foregroundColor(.gray)
+        .foregroundColor(.black)
+        .frame(maxHeight: .infinity)
+        .lineLimit(2)
+        .fixedSize(horizontal: false, vertical: true)
+                .frame(minHeight: 40)
+  }
+  
+  private var priceAndRatingProduct: some View {
+    HStack(spacing: 0) {
+      ratingValue
+      Spacer()
+      Text("\(product.price, specifier: "%.2f") ₽")
+        .font(.caption)
         .lineLimit(2)
     }
   }
   
-  private var ratingAndFavorite: some View {
-    HStack {
-      ratingValue
-      Spacer()
-      LikeButton(favorite: favorite, product: product)
-    }
-  }
-  
   private var ratingValue: some View {
-    HStack(spacing: 4) {
+    HStack(spacing: 0) {
       Image(CustomImage.star)
       Text(product.rating)
-        .font(.subheadline)
+        .font(.caption)
     }
   }
 }
+
 
 

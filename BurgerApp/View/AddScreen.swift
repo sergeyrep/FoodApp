@@ -14,7 +14,12 @@ struct AddScreen: View {
         ForEach($addToCart.cartItem) { $item in
           NavigationLink(
             destination:
-              DetailBurgerScreen(product: item.product, favorite: favorite, addToCart: addToCart)) {
+              DetailBurgerScreen(
+                product: item.product,
+                favorite: favorite,
+                addToCart: addToCart
+              )
+          ) {
                 CartItemRow(
                   item: $item,
                   removeItem: { addToCart.removeItem(item) }
@@ -76,8 +81,10 @@ struct CartItemRow: View {
         HStack {
           Spacer()
           Button {
-            if item.quantity > 1 {
-              item.quantity -= 1
+              if item.quantity > 1 {
+                withAnimation(.easeInOut(duration: 0.2)) {
+                item.quantity -= 1
+              }
             } else {
               withAnimation {
                 removeItem()
@@ -94,7 +101,9 @@ struct CartItemRow: View {
             .foregroundColor(.color)
           Spacer()
           Button {
-            item.quantity += 1
+            withAnimation(.easeInOut(duration: 0.2)) {
+              item.quantity += 1
+            }
           } label: {
             Image(.plus1)
               .foregroundColor(.reds)
@@ -104,15 +113,6 @@ struct CartItemRow: View {
       }
       .padding()
     }
-//    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-//      Button(role: .destructive) {
-//        withAnimation {
-//          removeItem()
-//        }
-//      } label: {
-//        Image(systemName: "trash.fill")
-//      }
-//    }
   }
 }
 

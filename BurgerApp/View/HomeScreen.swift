@@ -12,6 +12,7 @@ struct HomeScreen: View {
       FilterBar(vm: mainViewModel)
       ProductGrid(vm: mainViewModel, favorite: favoriteViewModel, addToCart: addToCart)
     }
+    .background(Color.color)
   }
 }
 

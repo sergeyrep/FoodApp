@@ -4,6 +4,7 @@ struct DetailButton: View {
   let product: Products
   @ObservedObject var addToCart: AddViewModel
   @Binding var portion: Int
+  @State private var cartBadgeOpacity = 0.0
   
   var totalPrice: Double {
     Double(portion) * product.price
@@ -22,6 +23,17 @@ struct DetailButton: View {
         Spacer()
         Button(action: {
           addToCart.addToCart(product, quantity: portion)
+          
+          withAnimation(.easeInOut(duration: 0.3)) {
+            addToCart.showCartBadge = true
+            cartBadgeOpacity = 1.0
+          }
+          
+          DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            withAnimation(.easeInOut(duration: 0.5)) {
+              cartBadgeOpacity = 0.0
+            }
+          }
         }) {
           Text("Добавить в корзину")
         }
