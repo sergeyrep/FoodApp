@@ -39,6 +39,8 @@ enum CustomImage: String {
   case set1
   case triple
   case vanilKok
+  case edit
+  case signOut
   
 }
 

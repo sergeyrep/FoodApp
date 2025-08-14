@@ -1,17 +1,101 @@
 import SwiftUI
 
 struct ProfileScreen: View {
-  @StateObject var viewModel = ProfileViewModel()
+  @ObservedObject var viewModel: ProfileViewModel
+  @State private var showEditScreen = false
   
   var body: some View {
-    VStack {
+    VStack(spacing: 0) {
       ZStack {
         ColorFon
         ProfileFoto
       }
-      CustomTextField(viewModel: viewModel, placeholder: "Name")
+      VStack(spacing: 10) {
+        CustomTextField(viewModel: viewModel, placeholder: "Name")
+        CustomTextField(viewModel: viewModel, placeholder: "E-mail")
+        CustomTextField(viewModel: viewModel, placeholder: "Delivery address")
+        CustomSecureField(viewModel: viewModel, placeholder: "Password")
+      }
+      .padding()
+      .background(Color.white)
+      .ignoresSafeArea(.all)
+      .cornerRadius(20, corners: [.topLeft, .topRight])
+      
+      Divider()
+      
+      VStack {
+        ButtonPaymentDetails
+        ButtonHistory
+        HStack {
+          ButtonEdit
+          ButtonExitProfile
+        }
+      }
+      .padding(.bottom, 25)
+      .background(Color.white)
     }
-    Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    .background(Color.red)
+  }
+  
+  private var ButtonPaymentDetails: some View {
+    Button {
+      
+    } label: {
+      HStack {
+        Text("Детали платежа")
+        Spacer()
+        Image(systemName: "chevron.forward")
+      }
+      .padding()
+      .foregroundColor(.gray)
+    }
+  }
+  
+  private var ButtonHistory: some View {
+    Button {
+      
+    } label: {
+      HStack {
+        Text("История заказов")
+        Spacer()
+        Image(systemName: "chevron.forward")
+      }
+      .padding()
+      .foregroundColor(.gray)
+    }
+  }
+  
+  private var ButtonExitProfile: some View {
+    Button {
+      
+    } label: {
+      HStack {
+        Text("Выйти")
+        Image(CustomImage.signOut)
+      }
+      .padding()
+      .foregroundColor(.reds)
+      .cornerRadius(20)
+    }
+  }
+  
+  private var ButtonEdit: some View {
+    Button {
+      showEditScreen = true
+    } label: {
+      HStack {
+        Text("Редактировать профиль")
+        Image(CustomImage.edit)
+      }
+      .padding()
+      .foregroundColor(.white)
+      .background(Color.color)
+      .cornerRadius(20)
+    }
+    .sheet(isPresented: $showEditScreen) {
+      EditProfileScreen()
+        .presentationDetents([.medium, .large])
+    }
   }
   
   private var ColorFon: some View {
@@ -51,38 +135,48 @@ private struct CustomTextField: View {
   var placeholder: String
   
   var body: some View {
-    VStack(spacing: 10) {
-      TextField(placeholder, text: $viewModel.name)
-        .padding()
-        .background(Color(.systemGray6))
-        .cornerRadius(20)
-        .shadow(radius: 6)
-        
-      TextField(placeholder, text: $viewModel.email)
-        .padding()
-        .padding()
-        .background(Color(.systemGray6))
-        .cornerRadius(20)
-        .shadow(radius: 6)
-      
-      SecureField(placeholder, text: $viewModel.password)
-        .padding()
-        .padding()
-        .background(Color(.systemGray6))
-        .cornerRadius(20)
-        .shadow(radius: 6)
-      
-      SecureField(placeholder, text: $viewModel.confirmPassword)
-        .padding()
-        .padding()
-        .background(Color(.systemGray6))
-        .cornerRadius(20)
-        .shadow(radius: 6)
-    }
-    .padding()
+    TextField(placeholder, text: $viewModel.name)
+      .padding()
+      .background(Color(.systemGray6))
+      .cornerRadius(20)
+      .shadow(radius: 6)
   }
 }
 
+private struct CustomSecureField: View {
+  @ObservedObject var viewModel: ProfileViewModel
+  var placeholder: String
+  
+  var body: some View {
+    SecureField(placeholder, text: $viewModel.confirmPassword)
+      .padding()
+      .background(Color(.systemGray6))
+      .cornerRadius(20)
+      .shadow(radius: 6)
+  }
+}
+
+extension View {
+  func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+    clipShape(RoundedCorner(radius: radius, corners: corners))
+  }
+}
+
+struct RoundedCorner: Shape {
+  var radius: CGFloat = .infinity
+  var corners: UIRectCorner = .allCorners
+  
+  func path(in rect: CGRect) -> Path {
+    let path = UIBezierPath(
+      roundedRect: rect,
+      byRoundingCorners: corners,
+      cornerRadii: CGSize(width: radius, height: radius)
+    )
+    return Path(path.cgPath)
+  }
+}
+
+
 #Preview {
-  ProfileScreen()
+  ProfileScreen(viewModel: .init())
 }

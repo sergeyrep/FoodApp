@@ -4,6 +4,7 @@ struct MainScreen: View {
   @StateObject var vm = MainViewModel()
   @StateObject var favorite = FavoriteViewModel()
   @StateObject var addToCart = AddViewModel()
+  @StateObject var profile = ProfileViewModel()
   
   init() {
     UITabBar.appearance().backgroundColor = UIColor.reds
@@ -11,14 +12,18 @@ struct MainScreen: View {
   
   var body: some View {
     TabView {
-      HomeScreen(mainViewModel: vm, favoriteViewModel: favorite, addToCart: addToCart)
+      NavigationStack {
+        HomeScreen(mainViewModel: vm, favoriteViewModel: favorite, addToCart: addToCart)
+      }
         .tabItem {
           Image(CustomImage.home)
           Text("*")
         }
         .tag(Tab.home)
       
-      ProfileScreen()
+      NavigationStack {
+        ProfileScreen(viewModel: profile)
+      }
         .tabItem {
           Image(CustomImage.user)
           Text("*")
@@ -34,7 +39,9 @@ struct MainScreen: View {
         }
         .tag(Tab.add)
       
-      MessageScreen()
+      NavigationStack {
+        MessageScreen()
+      }
         .tabItem {
           Image(CustomImage.comment)
           Text("*")
