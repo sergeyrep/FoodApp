@@ -3,6 +3,8 @@ import SwiftUI
 struct ProfileScreen: View {
   @ObservedObject var viewModel: ProfileViewModel
   @State private var showEditScreen = false
+  @State private var showPaymentDetailScreen = false
+  @State private var showHistoryScreen = false
   
   var body: some View {
     VStack(spacing: 0) {
@@ -39,7 +41,7 @@ struct ProfileScreen: View {
   
   private var ButtonPaymentDetails: some View {
     Button {
-      
+      showPaymentDetailScreen = true
     } label: {
       HStack {
         Text("Детали платежа")
@@ -49,11 +51,14 @@ struct ProfileScreen: View {
       .padding()
       .foregroundColor(.gray)
     }
+    .sheet(isPresented: $showPaymentDetailScreen) {
+      PaymentDetailScreen()
+    }
   }
   
   private var ButtonHistory: some View {
     Button {
-      
+      showHistoryScreen = true
     } label: {
       HStack {
         Text("История заказов")
@@ -62,6 +67,9 @@ struct ProfileScreen: View {
       }
       .padding()
       .foregroundColor(.gray)
+    }
+    .sheet(isPresented: $showHistoryScreen) {
+      HistoryScreen()
     }
   }
   
