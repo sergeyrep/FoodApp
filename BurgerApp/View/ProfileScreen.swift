@@ -41,7 +41,9 @@ struct ProfileScreen: View {
   
   private var ButtonPaymentDetails: some View {
     Button {
-      showPaymentDetailScreen = true
+      withAnimation(.easeInOut(duration: 0.3)) {
+        showPaymentDetailScreen = true
+      }
     } label: {
       HStack {
         Text("Детали платежа")
@@ -163,27 +165,6 @@ private struct CustomSecureField: View {
       .shadow(radius: 6)
   }
 }
-
-extension View {
-  func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-    clipShape(RoundedCorner(radius: radius, corners: corners))
-  }
-}
-
-struct RoundedCorner: Shape {
-  var radius: CGFloat = .infinity
-  var corners: UIRectCorner = .allCorners
-  
-  func path(in rect: CGRect) -> Path {
-    let path = UIBezierPath(
-      roundedRect: rect,
-      byRoundingCorners: corners,
-      cornerRadii: CGSize(width: radius, height: radius)
-    )
-    return Path(path.cgPath)
-  }
-}
-
 
 #Preview {
   ProfileScreen(viewModel: .init())

@@ -1,10 +1,3 @@
-//
-//  MessageScreen.swift
-//  BurgerApp
-//
-//  Created by Сергей on 13.07.2025.
-//
-
 import SwiftUI
 
 struct MessageScreen: View {
