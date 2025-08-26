@@ -1,18 +1,28 @@
-//
-//  HistoryScreen.swift
-//  BurgerApp
-//
-//  Created by Сергей on 15.08.2025.
-//
-
 import SwiftUI
+import CoreData
 
 struct HistoryScreen: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+  @StateObject private var history: OrderViewModel
+  
+  init(context: NSManagedObjectContext) {
+    _history = StateObject(wrappedValue: OrderViewModel(context: context))
+  }
+  
+  var body: some View {
+    List {
+      ForEach(history.orders, id: \.id) { order in
+        VStack(alignment: .leading) {
+          Text(order.name ?? "No name")
+          Text("x\(order.quantity) - \(order.price, specifier: "%.2f")₽")
+          Text(order.date ?? Date(), style: .date)
+        }
+      }
+      .onDelete { indexSet in
+        indexSet.map {history.orders[$0] }.forEach(history.deleteOrder)
+      }
     }
+    .navigationTitle("History orders")
+  }
 }
 
-#Preview {
-    HistoryScreen()
-}
+

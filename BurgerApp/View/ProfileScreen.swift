@@ -6,6 +6,8 @@ struct ProfileScreen: View {
   @State private var showPaymentDetailScreen = false
   @State private var showHistoryScreen = false
   
+  @Environment(\.managedObjectContext) private var context
+  
   var body: some View {
     VStack(spacing: 0) {
       ZStack {
@@ -71,7 +73,7 @@ struct ProfileScreen: View {
       .foregroundColor(.gray)
     }
     .sheet(isPresented: $showHistoryScreen) {
-      HistoryScreen()
+      HistoryScreen(context: context)
     }
   }
   

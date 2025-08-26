@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A5B67F902E5DDBE6002424E2 /* OrderBurgerHistory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B67F8F2E5DDBE6002424E2 /* OrderBurgerHistory+CoreDataProperties.swift */; };
+		A5B67F912E5DDBE6002424E2 /* OrderBurgerHistory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B67F8E2E5DDBE6002424E2 /* OrderBurgerHistory+CoreDataClass.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A5696DB42E1F7E0D00B36E80 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +32,8 @@
 		A5696DA62E1F7E0C00B36E80 /* BurgerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BurgerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5696DB32E1F7E0D00B36E80 /* BurgerAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BurgerAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5696DBD2E1F7E0D00B36E80 /* BurgerAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BurgerAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5B67F8E2E5DDBE6002424E2 /* OrderBurgerHistory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrderBurgerHistory+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A5B67F8F2E5DDBE6002424E2 /* OrderBurgerHistory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrderBurgerHistory+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -40,6 +47,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		A5063CDF2E5DA32000B4322E /* Core */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Core;
+			sourceTree = "<group>";
+		};
 		A5696DA82E1F7E0C00B36E80 /* BurgerApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -88,6 +100,9 @@
 		A5696D9D2E1F7E0C00B36E80 = {
 			isa = PBXGroup;
 			children = (
+				A5B67F8E2E5DDBE6002424E2 /* OrderBurgerHistory+CoreDataClass.swift */,
+				A5B67F8F2E5DDBE6002424E2 /* OrderBurgerHistory+CoreDataProperties.swift */,
+				A5063CDF2E5DA32000B4322E /* Core */,
 				A5696DA82E1F7E0C00B36E80 /* BurgerApp */,
 				A5696DB62E1F7E0D00B36E80 /* BurgerAppTests */,
 				A5696DC02E1F7E0D00B36E80 /* BurgerAppUITests */,
@@ -121,6 +136,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				A5063CDF2E5DA32000B4322E /* Core */,
 				A5696DA82E1F7E0C00B36E80 /* BurgerApp */,
 			);
 			name = BurgerApp;
@@ -249,6 +265,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5B67F902E5DDBE6002424E2 /* OrderBurgerHistory+CoreDataProperties.swift in Sources */,
+				A5B67F912E5DDBE6002424E2 /* OrderBurgerHistory+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,8 +1,22 @@
 import SwiftUI
+import CoreData
 
 struct AddScreen: View {
   @ObservedObject var addToCart: AddViewModel
   @ObservedObject var favorite: FavoriteViewModel
+  @StateObject private var orderVM: OrderViewModel
+  
+  @Environment(\.managedObjectContext) private var context
+  
+  init(
+    addToCart: AddViewModel,
+    favorite: FavoriteViewModel,
+    context: NSManagedObjectContext
+  ) {
+    self.addToCart = addToCart
+    self.favorite = favorite
+    _orderVM = StateObject(wrappedValue: OrderViewModel(context: context))
+  }
   
   var body: some View {
     ScrollView {
@@ -20,11 +34,11 @@ struct AddScreen: View {
                 addToCart: addToCart
               )
           ) {
-                CartItemRow(
-                  item: $item,
-                  removeItem: { addToCart.removeItem(item) }
-                )
-              }
+            CartItemRow(
+              item: $item,
+              removeItem: { addToCart.removeItem(item) }
+            )
+          }
           Divider()
             .background(.gray)
         }
@@ -34,7 +48,8 @@ struct AddScreen: View {
       }
       totalPrice
     }
-    .padding()
+    orderButton
+      .padding()
   }
   
   private var totalPrice: some View {
@@ -55,6 +70,32 @@ struct AddScreen: View {
     Text("Корзина")
       .font(Font.custom(.lobster, size: 45))
       .foregroundColor(.reds)
+  }
+  
+  private var orderButton: some View {
+    Button {
+      saveOrdersToCoreData()
+      addToCart.clearCart()
+    } label: {
+      Text("Оформить заказ")
+        .font(Font.custom(.lobster, size: 25))
+        .foregroundColor(.white)
+        .padding()
+        .frame(maxWidth: .infinity)
+        .background(Color.red)
+        .cornerRadius(20)
+    }
+  }
+  
+  private func saveOrdersToCoreData() {
+    for item in addToCart.cartItem {
+      orderVM
+        .addOrder(
+          name: item.product.name,
+          quantity: Int16(item.quantity),
+          price: item.product.price
+        )
+    }
   }
 }
 
@@ -81,8 +122,8 @@ struct CartItemRow: View {
         HStack {
           Spacer()
           Button {
-              if item.quantity > 1 {
-                withAnimation(.easeInOut(duration: 0.2)) {
+            if item.quantity > 1 {
+              withAnimation(.easeInOut(duration: 0.2)) {
                 item.quantity -= 1
               }
             } else {
@@ -115,4 +156,5 @@ struct CartItemRow: View {
     }
   }
 }
+
 

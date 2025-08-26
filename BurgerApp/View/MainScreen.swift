@@ -6,6 +6,8 @@ struct MainScreen: View {
   @StateObject var addToCart = AddViewModel()
   @StateObject var profile = ProfileViewModel()
   
+  @Environment(\.managedObjectContext) private var context
+  
   init() {
     UITabBar.appearance().backgroundColor = UIColor.reds
   }
@@ -31,7 +33,7 @@ struct MainScreen: View {
         .tag(Tab.profile)
       
       NavigationStack {
-        AddScreen(addToCart: addToCart, favorite: favorite)
+        AddScreen(addToCart: addToCart, favorite: favorite, context: context)
       }
         .tabItem {
           Image(CustomImage.plus)

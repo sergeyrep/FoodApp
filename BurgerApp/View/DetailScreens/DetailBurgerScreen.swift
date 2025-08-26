@@ -52,6 +52,8 @@ struct DetailBurgerScreen: View {
   @ObservedObject var addToCart: AddViewModel
   @State var portion = 1
   
+  @Environment(\.managedObjectContext) private var context
+  
   var body: some View {
       VStack { // Выравнивание по нижнему краю
         VStack(spacing: 0) {
@@ -72,7 +74,7 @@ struct DetailBurgerScreen: View {
   }
   
   private var cartBadgeView: some View {
-    NavigationLink(destination: AddScreen(addToCart: addToCart, favorite: favorite)) {
+    NavigationLink(destination: AddScreen(addToCart: addToCart, favorite: favorite, context: context)) {
       HStack(spacing: 12) {
         Image(systemName: "cart.fill")
           .font(.system(size: 20))

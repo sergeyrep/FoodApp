@@ -34,4 +34,8 @@ final class AddViewModel: ObservableObject {
       cartItem[index].quantity += 1
     }
   }
+  
+  func clearCart() {
+    cartItem.removeAll()
+  }
 }
