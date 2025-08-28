@@ -2,7 +2,7 @@ import Foundation
 import CoreData
 
 final class OrderViewModel: ObservableObject {
-  @Published var orders: [OrderBurgerHistory] = []
+  @Published var orders: [OrderBurger] = []
   
   private let context: NSManagedObjectContext
   
@@ -12,8 +12,8 @@ final class OrderViewModel: ObservableObject {
   }
   
   func fetchOrders() {
-    let request: NSFetchRequest<OrderBurgerHistory> = OrderBurgerHistory.fetchRequest()
-    request.sortDescriptors = [NSSortDescriptor(keyPath: \OrderBurgerHistory.date, ascending: false)]
+    let request: NSFetchRequest<OrderBurger> = OrderBurger.fetchRequest()
+    request.sortDescriptors = [NSSortDescriptor(keyPath: \OrderBurger.date, ascending: false)]
     do {
       orders = try context.fetch(request)
     } catch {
@@ -21,13 +21,19 @@ final class OrderViewModel: ObservableObject {
     }
   }
   
-  func addOrder(name: String, quantity: Int16, price: Double) {
-    let newOrder = OrderBurgerHistory(context: context)
+  func addOrder(from cartItems: [CartItem]) {
+    let newOrder = OrderBurger(context: context)
     newOrder.id = UUID()
-    newOrder.name = name
-    newOrder.price = price
     newOrder.date = Date()
-    newOrder.quantity = Int16(quantity)
+    
+    for item in cartItems {
+      let orderItem = OrderBurgerHistory(context: context)
+      orderItem.id = UUID()
+      orderItem.name = item.product.name
+      orderItem.price = item.product.price
+      orderItem.quantity = Int16(item.quantity)
+      orderItem.order = newOrder
+    }
     
     save()
   }
@@ -54,7 +60,12 @@ final class OrderViewModel: ObservableObject {
     }
   }
   
-  func deleteOrder(_ order: OrderBurgerHistory) {
+  func deleteOrder(_ order: OrderBurger) {
+    if let items = order.items as? Set<OrderBurgerHistory> {
+      for item in items {
+        context.delete(item)
+      }
+    }
     context.delete(order)
     save()
   }

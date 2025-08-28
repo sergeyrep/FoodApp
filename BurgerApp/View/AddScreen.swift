@@ -74,7 +74,7 @@ struct AddScreen: View {
   
   private var orderButton: some View {
     Button {
-      saveOrdersToCoreData()
+      saveOrdersToCoreData(context: context)
       addToCart.clearCart()
     } label: {
       Text("Оформить заказ")
@@ -87,15 +87,8 @@ struct AddScreen: View {
     }
   }
   
-  private func saveOrdersToCoreData() {
-    for item in addToCart.cartItem {
-      orderVM
-        .addOrder(
-          name: item.product.name,
-          quantity: Int16(item.quantity),
-          price: item.product.price
-        )
-    }
+  private func saveOrdersToCoreData(context: NSManagedObjectContext) {
+    orderVM.addOrder(from: addToCart.cartItem)
   }
 }
 

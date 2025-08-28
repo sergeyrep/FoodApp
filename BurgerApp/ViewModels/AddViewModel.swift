@@ -9,11 +9,11 @@ final class AddViewModel: ObservableObject {
       cartItem.reduce(0) { $0 + $1.quantity }
   }
   
-  func addToCart(_ product: Products, quantity: Int) {
+  func addToCart(_ product: Products, quantity: Int, price: Double) {
     if let index = cartItem.firstIndex(where: { $0.product.id == product.id }) {
       cartItem[index].quantity += quantity
     } else {
-      cartItem.append(CartItem(product: product, quantity: quantity))
+      cartItem.append(CartItem(id: UUID(), product: product, quantity: quantity, price: price))
     }
   }
   

@@ -22,7 +22,7 @@ struct DetailButton: View {
         
         Spacer()
         Button(action: {
-          addToCart.addToCart(product, quantity: portion)
+          addToCart.addToCart(product, quantity: portion, price: product.price)
           
           withAnimation(.easeInOut(duration: 0.3)) {
             addToCart.showCartBadge = true

@@ -73,7 +73,9 @@ struct ProfileScreen: View {
       .foregroundColor(.gray)
     }
     .sheet(isPresented: $showHistoryScreen) {
-      HistoryScreen(context: context)
+      NavigationStack {
+        HistoryScreen(context: context)
+      }
     }
   }
   
