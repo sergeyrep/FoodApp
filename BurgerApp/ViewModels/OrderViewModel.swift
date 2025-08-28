@@ -41,6 +41,19 @@ final class OrderViewModel: ObservableObject {
     }
   }
   
+  func clearOrders() {
+    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = OrderBurgerHistory.fetchRequest()
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    
+    do {
+      try context.execute(deleteRequest)
+      try context.save()
+      fetchOrders()
+    } catch {
+      print("Failed to clear orders: \(error.localizedDescription)")
+    }
+  }
+  
   func deleteOrder(_ order: OrderBurgerHistory) {
     context.delete(order)
     save()
