@@ -4,7 +4,7 @@ final class NetworkService {
   
   private init() {}
   
-  func downloadData() async -> [Products]? {
+  func downloadData() async throws -> [Products] {
     return Products.sampleProducts
   }
 }

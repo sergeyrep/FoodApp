@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct MainScreen: View {
-  @EnvironmentObject var vM: MainViewModel
+  @StateObject var vm = MainViewModel()
+  @StateObject var favorite = FavoriteViewModel()
+  @StateObject var addToCart = AddViewModel()
   
   init() {
     UITabBar.appearance().backgroundColor = UIColor.reds
@@ -9,7 +11,7 @@ struct MainScreen: View {
   
   var body: some View {
     TabView {
-      HomeScreen()
+      HomeScreen(mainViewModel: vm, favoriteViewModel: favorite, addToCart: addToCart)
         .tabItem {
           Image(CustomImage.home)
           Text("*")
@@ -23,7 +25,9 @@ struct MainScreen: View {
         }
         .tag(Tab.profile)
       
-      AddScreen()
+      NavigationStack {
+        AddScreen(addToCart: addToCart, favorite: favorite)
+      }
         .tabItem {
           Image(CustomImage.plus)
           Text("*")
@@ -36,7 +40,9 @@ struct MainScreen: View {
           Text("*")
         }
       
-      LikeScreen()
+      NavigationStack {
+        LikeScreen(vm: favorite, mainVM: vm, addToCart: addToCart)
+      }
         .tabItem {
           Image(CustomImage.heart)
           Text("*")
@@ -48,5 +54,5 @@ struct MainScreen: View {
 
 
 #Preview {
-  HomeScreen()
+  HomeScreen(mainViewModel: .init(), favoriteViewModel: .init(), addToCart: .init())
 }

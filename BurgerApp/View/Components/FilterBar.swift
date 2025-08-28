@@ -1,7 +1,12 @@
 import SwiftUI
 
 struct FilterBar: View {
-  @StateObject var vm: FilterViewModel
+  @ObservedObject var vm: MainViewModel
+  
+  init(vm: MainViewModel) {
+    self._vm = ObservedObject(wrappedValue: vm)
+    print("InitFilterBar")
+  }
   
   var body: some View {
     ScrollView(.horizontal) {
@@ -9,7 +14,7 @@ struct FilterBar: View {
         ForEach(Category.allCases, id: \.self) { category in
           Button(action: {
             vm.selectedCategory = category
-            vm.changeProducts()
+            vm.updateFilteredProducts()
           }) {
             Text(category.rawValue)
               .frame(width: 75, height: 50)
@@ -20,11 +25,8 @@ struct FilterBar: View {
           }
         }
       }
-      .padding()
+      .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
     }
   }
 }
 
-#Preview {
-  FilterBar(vm: FilterViewModel())
-}

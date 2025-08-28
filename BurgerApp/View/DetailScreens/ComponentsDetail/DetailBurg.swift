@@ -1,24 +1,29 @@
 import SwiftUI
 
 struct DetailBurg: View {
-  var vm: Products
+  let product: Products
+  @ObservedObject var favorite: FavoriteViewModel
   
-    var body: some View {
-      Image(vm.image)
-        .resizable()
-      Text(vm.name)
+  var body: some View {
+    VStack(alignment: .center) {
+      ZStack() {
+        Image(product.image)
+          .resizable()
+          .scaledToFit()
+      }
+      Text(product.name)
         .font(.headline)
       HStack {
         Image(CustomImage.star)
-        Text(vm.rating)
+        Text(product.rating)
         Spacer()
-        Text("\(vm.timeOfCooking)")
+        Text("\(product.timeOfCooking)")
+        LikeButton(favorite: favorite, product: product)
       }
       .padding()
-      Text(vm.subName)
+      Text(product.subName)
     }
+    .padding()
+  }
 }
 
-#Preview {
-  DetailBurg(vm: .mock)
-}

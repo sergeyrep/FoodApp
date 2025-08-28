@@ -1,24 +1,20 @@
 import SwiftUI
 
 struct HomeScreen: View {
-  @StateObject private var filterBar = FilterViewModel()
-  @StateObject private var mainViewModel = MainViewModel()
+  @ObservedObject var mainViewModel: MainViewModel
+  @ObservedObject var favoriteViewModel: FavoriteViewModel
+  @ObservedObject var addToCart: AddViewModel
   
   var body: some View {
     VStack {
       LabelBar()
-      SearchBar()
-      FilterBar(vm: filterBar)
-        .onAppear {
-          filterBar.mainViewModel = mainViewModel
-        }
-      ProductGrid()
-        .environmentObject(mainViewModel)
+      SearchBar(vm: mainViewModel)
+      FilterBar(vm: mainViewModel)
+      ProductGrid(vm: mainViewModel, favorite: favoriteViewModel, addToCart: addToCart)
     }
   }
 }
 
 #Preview {
-  HomeScreen()
-    .environmentObject(MainViewModel())
+  HomeScreen(mainViewModel: .init(), favoriteViewModel: .init(), addToCart: .init())
 }

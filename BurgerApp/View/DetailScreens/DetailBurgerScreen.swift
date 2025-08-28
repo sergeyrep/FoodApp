@@ -1,20 +1,17 @@
 import SwiftUI
 
 struct DetailBurgerScreen: View {
-  var vm: Products
+  let product: Products
+  @ObservedObject var favorite: FavoriteViewModel
+  @ObservedObject var addToCart: AddViewModel
+  @State var portion = 1
   
   var body: some View {
     VStack(spacing: 0) {
-      NavBar()
-      DetailBurg(vm: vm)
-      DetailParametr()
-      DetailButton(vm: vm)
+      DetailBurg(product: product, favorite: favorite)
+      DetailParametr(portion: $portion)
+      DetailButton(product: product, addToCart: addToCart, portion: $portion)
     }
-    .navigationBarBackButtonHidden()
   }
 }
 
-
-#Preview {
-  DetailBurgerScreen(vm: .mock)
-}

@@ -1,27 +1,44 @@
 import SwiftUI
 
-struct ProductGrid: View {
-  
-  @EnvironmentObject var vM: MainViewModel
+struct ProductGrid: View {  
+  @ObservedObject var vm: MainViewModel
+  @ObservedObject var favorite: FavoriteViewModel
+  @ObservedObject var addToCart: AddViewModel
   
   var body: some View {
     ScrollView {
-      LazyVGrid(columns: [GridItem(.flexible(), spacing: 0), GridItem(.flexible(), spacing: 0)], spacing: 0) {
-        ForEach(vM.filteredProducts) { product in
-          ButtonBurger(vM: product)
+      LazyVGrid(columns: [GridItem(.adaptive(minimum: 160))]) {
+        ForEach(vm.filteredProducts) { product in
+          ButtonBurger(
+            product: product,
+            favorite: favorite,
+            addToCart: addToCart,
+            onFavoriteToggle: {
+              vm
+                .toggleFavorite(
+                  for: product.id
+                )
+          })
         }
-        .padding()
-      }
+        .padding(.top, 2)
+      }.padding(10)
     }
-    .onAppear {
-      Task {
-        await vM.fetchData()
-      }
+    .textInputAutocapitalization(.never)
+    .onChange(of: vm.textSearch) { _, newValue in
+      vm.updateFilteredProducts()
+    }
+    .overlay { noSeachrResult }
+  }
+  
+  @ViewBuilder
+  private var noSeachrResult: some View {
+    if !vm.textSearch.isEmpty && vm.filteredProducts.isEmpty {
+      ContentUnavailableView(
+        "Поиск не дал результата",
+        systemImage: "magnifyingglass",
+        description: Text("\(vm.textSearch) пока нет, вы можете написать нам в соцсетях и мы добавим его")
+      )
     }
   }
 }
 
-#Preview {
-    ProductGrid()
-    .environmentObject(MainViewModel())
-}
