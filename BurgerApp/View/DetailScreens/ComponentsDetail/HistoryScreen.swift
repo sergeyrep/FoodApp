@@ -14,7 +14,7 @@ struct HistoryScreen: View {
         NavigationLink(destination: DetailHistoryScreen(order: order)
         ) {
           VStack(alignment: .leading) {
-            Text(order.date, style: .date)
+            Text(order.date ?? Date(), style: .date)
               .font(.headline)
             
             Spacer()
@@ -69,7 +69,7 @@ struct DetailHistoryScreen: View {
       if let items = order.items?.allObjects as? [OrderBurgerHistory] {
         ForEach(items, id: \.id) { item in
           HStack {
-            Text(item.name)
+            Text(item.name ?? "No name")
             Spacer()
             Text("x\(item.quantity)")
             Text("\(item.price, specifier: "%.2f") ₽")

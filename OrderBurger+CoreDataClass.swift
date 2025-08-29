@@ -1,8 +1,8 @@
 //
-//  Order+CoreDataClass.swift
+//  OrderBurger+CoreDataClass.swift
 //  BurgerApp
 //
-//  Created by Сергей on 28.08.2025.
+//  Created by Сергей on 29.08.2025.
 //
 //
 
