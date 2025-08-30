@@ -2,6 +2,7 @@ import Foundation
 import Combine
 
 final class ProfileViewModel: ObservableObject {
+  
   @Published var name: String = ""
   @Published var email: String = ""
   @Published var password: String = ""
@@ -10,5 +11,4 @@ final class ProfileViewModel: ObservableObject {
   @Published var isAuthenticated: Bool = false
   
   private var cancellables = Set<AnyCancellable>()
-  
 }

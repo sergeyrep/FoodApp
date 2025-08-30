@@ -1,6 +1,6 @@
 import Foundation
 
-struct User {
+struct UserLocalModel {
   let name: String
   let email: String
   let password: String

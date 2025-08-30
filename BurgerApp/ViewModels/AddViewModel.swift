@@ -13,7 +13,15 @@ final class AddViewModel: ObservableObject {
     if let index = cartItem.firstIndex(where: { $0.product.id == product.id }) {
       cartItem[index].quantity += quantity
     } else {
-      cartItem.append(CartItem(id: UUID(), product: product, quantity: quantity, price: price))
+      cartItem
+        .append(
+          CartItem(
+            id: UUID(),
+            product: product,
+            quantity: quantity,
+            price: price
+          )
+        )
     }
   }
   
@@ -29,11 +37,11 @@ final class AddViewModel: ObservableObject {
     }
   }
   
-  func increase(for itemId: UUID) {
-    if let index = cartItem.firstIndex(where: { $0.product.id == itemId }) {
-      cartItem[index].quantity += 1
-    }
-  }
+//  func increase(for itemId: UUID) {
+//    if let index = cartItem.firstIndex(where: { $0.product.id == itemId }) {
+//      cartItem[index].quantity += 1
+//    }
+//  }
   
   func clearCart() {
     cartItem.removeAll()

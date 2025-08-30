@@ -11,12 +11,9 @@ struct LikeScreen: View {
       contentView
     }
   }
-  
-  //@ViewBuilder
+
   private var navTitle: some View {
-    Text("Избранное")
-      .font(Font.custom(.lobster, size: 45))
-      .foregroundColor(.reds)
+    mainTitle("Избранное", color: .reds)
   }
   
   @ViewBuilder
