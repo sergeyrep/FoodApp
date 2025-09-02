@@ -1,15 +1,18 @@
 import SwiftUI
+import CoreData
 
 struct MainScreen: View {
   @StateObject var vm = MainViewModel()
   @StateObject var favorite = FavoriteViewModel()
   @StateObject var addToCart = AddViewModel()
   @StateObject var profile = ProfileViewModel()
+  let user: User
   
   @Environment(\.managedObjectContext) private var context
   
-  init() {
+  init(context: NSManagedObjectContext, user: User) {
     UITabBar.appearance().backgroundColor = UIColor.reds
+    self.user = user
   }
   
   var body: some View {
@@ -17,49 +20,50 @@ struct MainScreen: View {
       NavigationStack {
         HomeScreen(mainViewModel: vm, favoriteViewModel: favorite, addToCart: addToCart)
       }
-        .tabItem {
-          Image(CustomImage.home)
-          Text("*")
-        }
-        .tag(Tab.home)
+      .tabItem {
+        Image(CustomImage.home)
+        Text("*")
+      }
+      .tag(Tab.home)
       
       NavigationStack {
-        ProfileScreen(viewModel: profile)
+        ProfileScreen(user: user)
       }
-        .tabItem {
-          Image(CustomImage.user)
-          Text("*")
-        }
-        .tag(Tab.profile)
+      .tabItem {
+        Image(CustomImage.user)
+        Text("*")
+      }
+      .tag(Tab.profile)
       
       NavigationStack {
         AddScreen(addToCart: addToCart, favorite: favorite, context: context)
       }
-        .tabItem {
-          Image(CustomImage.plus)
-          Text("*")
-        }
-        .tag(Tab.add)
+      .tabItem {
+        Image(CustomImage.plus)
+        Text("*")
+      }
+      .tag(Tab.add)
       
       NavigationStack {
         MessageScreen()
       }
-        .tabItem {
-          Image(CustomImage.comment)
-          Text("*")
-        }
+      .tabItem {
+        Image(CustomImage.comment)
+        Text("*")
+      }
       
       NavigationStack {
         LikeScreen(vm: favorite, mainVM: vm, addToCart: addToCart)
       }
-        .tabItem {
-          Image(CustomImage.heart)
-          Text("*")
-        }
-        .tag(Tab.like)
+      .tabItem {
+        Image(CustomImage.heart)
+        Text("*")
+      }
+      .tag(Tab.like)
     }
   }
 }
+
 
 
 #Preview {

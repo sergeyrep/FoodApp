@@ -67,9 +67,7 @@ struct AddScreen: View {
   }
   
   private var navTitle: some View {
-    Text("Корзина")
-      .font(Font.custom(.lobster, size: 45))
-      .foregroundColor(.reds)
+    mainTitle("Корзина", color: .reds)
   }
   
   private var orderButton: some View {
@@ -77,13 +75,7 @@ struct AddScreen: View {
       saveOrdersToCoreData(context: context)
       addToCart.clearCart()
     } label: {
-      Text("Оформить заказ")
-        .font(Font.custom(.lobster, size: 25))
-        .foregroundColor(.white)
-        .padding()
-        .frame(maxWidth: .infinity)
-        .background(Color.red)
-        .cornerRadius(20)
+      mainTitle("Оформить заказ", color: .reds)
     }
   }
   

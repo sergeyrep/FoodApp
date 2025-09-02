@@ -1,10 +1,14 @@
 import SwiftUI
+import CoreData
 
 struct ProfileScreen: View {
-  @ObservedObject var viewModel: ProfileViewModel
+  @EnvironmentObject var authViewModel: AuthViewModel
+  @StateObject var viewModel = ProfileViewModel()
   @State private var showEditScreen = false
   @State private var showPaymentDetailScreen = false
   @State private var showHistoryScreen = false
+  
+  let user: User
   
   @Environment(\.managedObjectContext) private var context
   
@@ -15,14 +19,18 @@ struct ProfileScreen: View {
         ProfileFoto
       }
       VStack(spacing: 10) {
-        CustomTextField(viewModel: viewModel, placeholder: "Name")
-        CustomTextField(viewModel: viewModel, placeholder: "E-mail")
-        CustomTextField(viewModel: viewModel, placeholder: "Delivery address")
-        CustomSecureField(viewModel: viewModel, placeholder: "Password")
+        Text(authViewModel.currentUser?.name ?? "Name")
+          .modifier(ProfText())
+        Text(user.password ?? "Password")
+          .modifier(ProfText())
+        Text(user.email ?? "Email")
+          .modifier(ProfText())
+        Text(user.adress ?? "Adress")
+          .modifier(ProfText())
       }
       .padding()
+      .padding(.bottom, 15)
       .background(Color.white)
-      .ignoresSafeArea(.all)
       .cornerRadius(20, corners: [.topLeft, .topRight])
       
       Divider()
@@ -30,10 +38,13 @@ struct ProfileScreen: View {
       VStack {
         ButtonPaymentDetails
         ButtonHistory
-        HStack {
+          .padding(.bottom, 25)
+        HStack() {
           ButtonEdit
+          
           ButtonExitProfile
         }
+        .padding(.horizontal, 10)
       }
       .padding(.bottom, 25)
       .background(Color.white)
@@ -81,15 +92,22 @@ struct ProfileScreen: View {
   
   private var ButtonExitProfile: some View {
     Button {
-      
+      authViewModel.logout()
     } label: {
       HStack {
         Text("Выйти")
+          .padding(.leading,20)
+        Spacer()
         Image(CustomImage.signOut)
+          .padding(.trailing, 20)
       }
       .padding()
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
       .foregroundColor(.reds)
-      .cornerRadius(20)
+      .overlay(
+        RoundedRectangle(cornerRadius: 20)
+          .stroke(Color.reds, lineWidth: 1)
+      )
     }
   }
   
@@ -101,13 +119,14 @@ struct ProfileScreen: View {
         Text("Редактировать профиль")
         Image(CustomImage.edit)
       }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
       .padding()
       .foregroundColor(.white)
       .background(Color.color)
       .cornerRadius(20)
     }
     .sheet(isPresented: $showEditScreen) {
-      EditProfileScreen()
+      EditProfileScreen(user: user)
         .presentationDetents([.medium, .large])
     }
   }
@@ -145,7 +164,7 @@ struct ProfileScreen: View {
 }
 
 private struct CustomTextField: View {
-  @ObservedObject var viewModel: ProfileViewModel
+  @ObservedObject var viewModel: AuthViewModel
   var placeholder: String
   
   var body: some View {
@@ -158,11 +177,11 @@ private struct CustomTextField: View {
 }
 
 private struct CustomSecureField: View {
-  @ObservedObject var viewModel: ProfileViewModel
+  @ObservedObject var viewModel: AuthViewModel
   var placeholder: String
   
   var body: some View {
-    SecureField(placeholder, text: $viewModel.confirmPassword)
+    SecureField(placeholder, text: $viewModel.password)
       .padding()
       .background(Color(.systemGray6))
       .cornerRadius(20)
@@ -171,5 +190,17 @@ private struct CustomSecureField: View {
 }
 
 #Preview {
-  ProfileScreen(viewModel: .init())
+  ProfileScreen(user: .mock)
 }
+
+struct ProfText: ViewModifier {
+ func body(content: Content) -> some View {
+    content
+     .padding()
+     .frame(maxWidth: .infinity, alignment: .leading)
+     .background(Color(.systemGray6))
+     .cornerRadius(20)
+     .shadow(radius: 6)
+  }
+}
+

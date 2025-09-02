@@ -18,7 +18,6 @@ struct SearchBar: View {
         
       } label: {
         Image(.iconSort)
-          .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
       }
     }
     .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))

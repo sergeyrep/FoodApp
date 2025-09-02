@@ -1,10 +1,18 @@
 import SwiftUI
 
 struct ContentView: View {
-  
+  @Environment(\.managedObjectContext) private var context
+  @EnvironmentObject private var authViewModel: AuthViewModel
+
     var body: some View {
       NavigationStack {
-        MainScreen()
+        if authViewModel.isloggedIn, let user = authViewModel.currentUser {
+          MainScreen(context: context, user: user)
+            .environmentObject(authViewModel)
+        } else {
+          RegisterScreen()
+            .environmentObject(authViewModel)
+        }
       }
     }
 }
@@ -35,3 +43,4 @@ struct ContentViewMainScreen: View {
 }
 
 
+//com.Res.BurgerApp

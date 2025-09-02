@@ -32,7 +32,9 @@ final class OrderViewModel: ObservableObject {
       orderItem.name = item.product.name
       orderItem.price = item.product.price
       orderItem.quantity = Int16(item.quantity)
+      
       orderItem.order = newOrder
+      newOrder.addToItems(orderItem)
     }
     
     save()
@@ -48,16 +50,33 @@ final class OrderViewModel: ObservableObject {
   }
   
   func clearOrders() {
-    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = OrderBurgerHistory.fetchRequest()
-    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    let fetchRequest: NSFetchRequest<OrderBurger> = OrderBurger.fetchRequest()
     
     do {
-      try context.execute(deleteRequest)
-      try context.save()
-      fetchOrders()
+      let allOrders = try context.fetch(fetchRequest)
+      for order in allOrders {
+        if let items = order.items as? Set<OrderBurgerHistory> {
+          for item in items {
+            context.delete(item)
+          }
+        }
+        context.delete(order)
+      }
+      save()
     } catch {
-      print("Failed to clear orders: \(error.localizedDescription)")
+      print("Ошибка при получении заказов: \(error.localizedDescription)")
     }
+    
+//    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = OrderBurgerHistory.fetchRequest()
+//    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+//    
+//    do {
+//      try context.execute(deleteRequest)
+//      try context.save()
+//      fetchOrders()
+//    } catch {
+//      print("Failed to clear orders: \(error.localizedDescription)")
+//    }
   }
   
   func deleteOrder(_ order: OrderBurger) {

@@ -23,6 +23,9 @@ struct EditProfileScreen: View {
         buttonSaveEmail
       }.padding()
     }
+<<<<<<< HEAD
+  
+=======
   }
   
   private func changeInfo(
@@ -62,6 +65,7 @@ struct EditProfileScreen: View {
     }
     .buttonStyle(.bordered)
   }
+>>>>>>> a945419 (profileScreen)
 }
 
 //если опционально

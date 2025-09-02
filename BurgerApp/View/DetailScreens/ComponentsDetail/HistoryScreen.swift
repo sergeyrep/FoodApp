@@ -9,34 +9,33 @@ struct HistoryScreen: View {
   }
   
   var body: some View {
-    List {
-      ForEach(history.orders, id: \.id) { order in
-        NavigationLink(destination: DetailHistoryScreen(order: order)
-        ) {
-          VStack(alignment: .leading) {
-            Text(order.date ?? Date(), style: .date)
-              .font(.headline)
-            
-            Spacer()
-            
-            if let items = order.items?.allObjects as? [OrderBurgerHistory] {
-              Text("\(items.count) позиций")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
+      List {
+        ForEach(history.orders, id: \.id) { order in
+          NavigationLink(destination: DetailHistoryScreen(order: order)
+          ) {
+            VStack(alignment: .leading) {
+              Text(order.date ?? Date(), style: .date)
+                .font(.headline)
+              
+              Spacer()
+              
+              if let items = order.items?.allObjects as? [OrderBurgerHistory] {
+                Text("\(items.count) позиций")
+                  .font(.subheadline)
+                  .foregroundColor(.secondary)
+              }
             }
-//            Text("Сумма: \(history.totalPrice(for: order), specifier: "%.2f") ₽")
-//              .foregroundColor(.secondary)
-//              .font(.subheadline)
           }
         }
+        .onDelete { indexSet in
+          indexSet.map {history.orders[$0] }.forEach(history.deleteOrder)
+        }
       }
-      .onDelete { indexSet in
-        indexSet.map {history.orders[$0] }.forEach(history.deleteOrder)
-      }
+      .navigationTitle("История заказов")
+      .gradient()
+      .scrollContentBackground(.hidden)
+      clearAllOrdersButton
     }
-    .navigationTitle("History orders")
-    clearAllOrdersButton
-  }
   
   private var historyOrders: some View {
     Button {
@@ -52,14 +51,6 @@ struct HistoryScreen: View {
     }
   }
 }
-
-//struct DetailHistoryScreen: View {
-//  let order: OrderBurger
-//
-//  var body: some View {
-//    Text("DetailHistoryScreen")
-//  }
-//}
 
 struct DetailHistoryScreen: View {
   let order: OrderBurger
@@ -97,3 +88,5 @@ private let dateFormatter: DateFormatter = {
   formatter.timeStyle = .short
   return formatter
 }()
+
+

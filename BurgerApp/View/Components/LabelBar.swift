@@ -4,9 +4,7 @@ struct LabelBar: View {
   var body: some View {
     HStack(spacing: 0) {
       VStack(alignment: .leading) {
-        Text("БутерБургер")
-          .font(Font.custom(.lobster, size: 45))
-          .foregroundColor(.reds)
+        mainTitle("БутерБургер", color: .reds)
         Text("Закажите свой любимый бургер")
           .font(Font.custom(.popins, size: 20))
           .foregroundColor(.color)
