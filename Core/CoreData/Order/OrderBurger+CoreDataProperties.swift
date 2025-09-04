@@ -19,6 +19,7 @@ extension OrderBurger {
     @NSManaged public var date: Date?
     @NSManaged public var id: UUID?
     @NSManaged public var items: NSSet?
+    @NSManaged public var user: User?
 
 }
 

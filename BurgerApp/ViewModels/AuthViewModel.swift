@@ -13,11 +13,29 @@ class AuthViewModel: ObservableObject {
   @Published var isloggedIn: Bool = false
   @Published var errorMessage: String?
   @Published var avatar: UIImage?
+  @Published var isAuthenticated: Bool = false
   
   init(context: NSManagedObjectContext) {
     self.authService = AuthService(context: context)
     checkExistingUser()
   }
+  
+  //--------------------//
+  
+  func setCurrentUser(_ user: User) {
+    self.currentUser = user
+    self.isAuthenticated = true
+    
+    NotificationCenter.default.post(name: .userDidChange, object: user)
+  }
+  
+  func logoutNotification() {
+    self.currentUser = nil
+    self.isAuthenticated = false
+    NotificationCenter.default.post(name: .userDidChange, object: nil)
+  }
+  
+  //--------------------//
   
   func checkExistingUser() {
     if let userId = UserDefaults.standard.string(forKey: "currentUserId"),
@@ -130,3 +148,7 @@ class AuthViewModel: ObservableObject {
   }
 }
 
+
+extension Notification.Name {
+    static let userDidChange = Notification.Name("userDidChange")
+}

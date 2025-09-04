@@ -2,15 +2,66 @@ import Foundation
 import CoreData
 
 final class OrderViewModel: ObservableObject {
+  @Published var currentUser: User? //new
   @Published var orders: [OrderBurger] = []
   
   private let context: NSManagedObjectContext
   
   init(context: NSManagedObjectContext) {
     self.context = context
-    fetchOrders()
+    fetchOrdersByUser()
   }
   
+  //________________________________//
+  
+  func setCurrentUser(_ user: User?) {
+    self.currentUser = user
+    fetchOrdersByUser()
+  }
+  
+  func fetchOrdersByUser() {
+    guard let user = currentUser else {
+      orders = []
+      return
+    }
+    
+    let request: NSFetchRequest<OrderBurger> = OrderBurger.fetchRequest()
+    request.predicate = NSPredicate(format: "user == %@", user)
+    request.sortDescriptors = [NSSortDescriptor(keyPath: \OrderBurger.date, ascending: false)]
+    do {
+      orders = try context.fetch(request)
+    } catch {
+      print("error")
+      orders = []
+    }
+  }
+  
+  func addOrderByUser(from cartItems: [CartItem]) {
+    guard let user = currentUser else {
+      print("ne tot user")
+      return
+    }
+    
+    let newOrder = OrderBurger(context: context)
+    newOrder.id = UUID()
+    newOrder.date = Date()
+    newOrder.user = user
+    
+    for item in cartItems {
+      let orderItem = OrderBurgerHistory(context: context)
+      orderItem.id = UUID()
+      orderItem.name = item.product.name
+      orderItem.price = item.product.price
+      orderItem.quantity = Int16(item.quantity)
+      orderItem.order = newOrder
+      newOrder.addToItems(orderItem)
+    }
+    
+    user.addToOrders(newOrder)
+    
+    save()
+  }
+  //---------------------------------//
   func fetchOrders() {
     let request: NSFetchRequest<OrderBurger> = OrderBurger.fetchRequest()
     request.sortDescriptors = [NSSortDescriptor(keyPath: \OrderBurger.date, ascending: false)]
@@ -43,7 +94,7 @@ final class OrderViewModel: ObservableObject {
   private func save() {
     do {
       try context.save()
-      fetchOrders()
+      fetchOrdersByUser()
     } catch {
       print("error saving context: \(error)")
     }

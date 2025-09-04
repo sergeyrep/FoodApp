@@ -5,6 +5,7 @@ struct AddScreen: View {
   @ObservedObject var addToCart: AddViewModel
   @ObservedObject var favorite: FavoriteViewModel
   @StateObject private var orderVM: OrderViewModel
+  @EnvironmentObject private var authVM: AuthViewModel
   
   @Environment(\.managedObjectContext) private var context
   
@@ -50,6 +51,10 @@ struct AddScreen: View {
     }
     orderButton
       .padding()
+      .onAppear {
+        // Устанавливаем текущего пользователя
+        orderVM.setCurrentUser(authVM.currentUser)
+      }
   }
   
   private var totalPrice: some View {
@@ -80,7 +85,7 @@ struct AddScreen: View {
   }
   
   private func saveOrdersToCoreData(context: NSManagedObjectContext) {
-    orderVM.addOrder(from: addToCart.cartItem)
+    orderVM.addOrderByUser(from: addToCart.cartItem)
   }
 }
 

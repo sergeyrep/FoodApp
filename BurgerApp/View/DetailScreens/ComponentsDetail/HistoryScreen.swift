@@ -3,12 +3,14 @@ import CoreData
 
 struct HistoryScreen: View {
   @StateObject private var history: OrderViewModel
+  @EnvironmentObject var auth: AuthViewModel
   
   init(context: NSManagedObjectContext) {
     _history = StateObject(wrappedValue: OrderViewModel(context: context))
   }
   
   var body: some View {
+    NavigationStack {
       List {
         ForEach(history.orders, id: \.id) { order in
           NavigationLink(destination: DetailHistoryScreen(order: order)
@@ -32,10 +34,23 @@ struct HistoryScreen: View {
         }
       }
       .navigationTitle("История заказов")
-      .gradient()
-      .scrollContentBackground(.hidden)
-      clearAllOrdersButton
     }
+    .onAppear {
+      // Устанавливаем текущего пользователя при появлении экрана
+      history.setCurrentUser(auth.currentUser)
+    }
+    .onReceive(NotificationCenter.default.publisher(for: .userDidChange)) { notification in
+      // Обновляем при смене пользователя
+      if let user = notification.object as? User {
+        history.setCurrentUser(user)
+      } else {
+        history.setCurrentUser(nil)
+      }
+    }
+    .gradient()
+    .scrollContentBackground(.hidden)
+    clearAllOrdersButton
+  }
   
   private var historyOrders: some View {
     Button {
