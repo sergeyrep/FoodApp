@@ -43,7 +43,6 @@ enum CustomImage: String {
   case signOut
   
 }
-
 extension Image {
   init (_ name: CustomImage) {
     self.init(name.rawValue)

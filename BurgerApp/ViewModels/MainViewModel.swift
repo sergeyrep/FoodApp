@@ -67,3 +67,12 @@ extension MainViewModel {
     }
   }
 }
+
+extension MainViewModel {
+  
+  func changeBurger(_ products: Products) {
+    if let index = allProducts.firstIndex(where: { $0.id == products.id }) {
+      allProducts[index] = products
+    }
+  }
+}
